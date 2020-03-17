@@ -15,9 +15,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Jsp File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -35,6 +35,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1Y9avBGJ9hHXsE54nNPPA2HPTaI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -215,7 +216,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -297,22 +298,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="731" y="289" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582895307779" />
-    <state width="1070" height="204" key="GridCell.Tab.0.bottom" timestamp="1584287547711">
+    <state width="1070" height="204" key="GridCell.Tab.0.bottom" timestamp="1584460476208">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584287547711" />
-    <state width="1070" height="204" key="GridCell.Tab.0.center" timestamp="1584287547711">
+    <state width="1070" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584460476208" />
+    <state width="1070" height="204" key="GridCell.Tab.0.center" timestamp="1584460476208">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584287547711" />
-    <state width="1070" height="204" key="GridCell.Tab.0.left" timestamp="1584287547711">
+    <state width="1070" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584460476208" />
+    <state width="1070" height="204" key="GridCell.Tab.0.left" timestamp="1584460476207">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584287547711" />
-    <state width="1070" height="204" key="GridCell.Tab.0.right" timestamp="1584287547711">
+    <state width="1070" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584460476207" />
+    <state width="1070" height="204" key="GridCell.Tab.0.right" timestamp="1584460476208">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584287547711" />
+    <state width="1070" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584460476208" />
     <state width="1070" height="204" key="GridCell.Tab.1.bottom" timestamp="1584287547707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
