@@ -1,0 +1,261 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
+    <link rel="stylesheet" type="text/css" href="themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/register.css">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <title>注册</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table.js" ;></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+
+</head>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<body style=" background: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3331243230,2462603985&fm=26&gp=0.jpg) no-repeat center ; background-size: cover;">
+<div class="modal-dialog" style="margin-top: 10%;">
+    <div class="modal-content ">
+        <div class="modal-header">
+            <h4 class="modal-title text-center" id="myModalLabel">欢迎注册</h4>
+        </div>
+        <div class="modal-body" id="model-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputUname" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputUname" placeholder="请输入用户名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputDanyuan" class="col-sm-2 control-label">单元号</label>
+                    <div class="col-sm-10">
+                        <select id="inputDanyuan" class="form-control">
+                            <option>1单元</option>
+                            <option>2单元</option>
+                            <option>3单元</option>
+                            <option>4单元</option>
+                            <option>5单元</option>
+                            <option>6单元</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputLouceng" class="col-sm-2 control-label">楼层</label>
+                    <div class="col-sm-10">
+                        <select id="inputLouceng" class="form-control">
+                            <option>1楼</option>
+                            <option>2楼</option>
+                            <option>3楼</option>
+                            <option>4楼</option>
+                            <option>5楼</option>
+                            <option>6楼</option>
+                            <option>7楼</option>
+                            <option>8楼</option>
+                            <option>9楼</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputFangjian" class="col-sm-2 control-label">房间号</label>
+                    <div class="col-sm-10">
+                        <select id="inputFangjian" class="form-control">
+                            <option>A-1</option>
+                            <option>A-2</option>
+                            <option>A-3</option>
+                            <option>A-4</option>
+                            <option>B-1</option>
+                            <option>B-2</option>
+                            <option>B-3</option>
+                            <option>B-4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone" class="col-sm-2 control-label">联系电话</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputPhone" placeholder="请输入联系电话" onKeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" >
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                <button id="btn1" type="button" class="btn btn-primary form-control" onclick="backlogin()">登录</button>
+            </div>
+            <div class="form-group">
+                <button id="registe" type="button" class="btn btn-default form-control">注册</button>
+            </div>
+
+        </div>
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="testdialog">
+                    提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                请填写用户名，密码和联系电话
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div><!--密码、用户名、电话为空时提示框-->
+<div class="modal fade" id="pwdcheck" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="pwddialog">
+                    提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                密码至少为8到16位中必须包含大小写字母、数字、特殊字符,且不能带有空格!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div><!--密码、用户名、电话为空时提示框-->
+<div class="modal fade" id="unamecheck" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="unamedialog">
+                    提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                用户名必须是3到8位中文!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div><!--密码、用户名、电话为空时提示框-->
+<div class="modal fade" id="phonecheck" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="phonedialog">
+                    提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                手机号格式错误，请仔细检查并重新输入!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div><!--手机号格式错误提示框-->
+</body>
+<script type="text/javascript">
+    $(function () {
+        $("#registe").click(function () {
+            var uname = $("#inputUname").val();
+            var password = $("#inputPassword").val();
+            var danyuan = $("#inputDanyuan").val();
+            var louceng = $("#inputLouceng").val();
+            var fangjian = $("#inputFangjian").val();
+            var phone = $("#inputPhone").val();
+            console.log("用户名:" + uname + "\n密码为:" + password);
+            var pwdRegex = new RegExp('(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^a-zA-Z0-9])');
+            var unameRegex = /^[\u4E00-\u9FA5]{3,8}$/;
+            var phoneRegex =/^1(3|4|5|6|7|8|9)\d{9}$/;
+            if (!uname || !password || !phone) {
+                $('#myModal').modal();
+            } else if (!pwdRegex.test(password) || password.indexOf(" ") !== -1 || password.length < 8 || password.length > 16) {
+                $('#pwdcheck').modal();
+            } else if (!unameRegex.test(uname)){
+                $('#unamecheck').modal();
+            }else if (!phoneRegex.test(phone)){
+                $('#phonecheck').modal();
+            }
+            else {
+                console.log("something happend")
+            } //用户名格式校验
+
+            $.ajax({
+                url: "register",
+                type: "post",
+                async: true,
+                data: {
+                    "uname": uname,
+                    "upassword": password,
+                    "danyuan": danyuan,
+                    "louceng": louceng,
+                    "fangjian": fangjian,
+                    "phone": phone
+                },
+                dataType: "json",
+                success: function (data) {
+                    //获取通过resp回写的数据
+                    if (data.successcode == "200") {
+                        window.location.href = "index.html";
+                        console.log("注册成功");
+                    } else {
+                        console.log("注册失败")
+                    }
+                }
+            });//ajax请求
+            //if else
+        }/**btn2的function**/)
+    });//
+
+    function backlogin() {
+        window.location.href="index.html";
+    }
+</script>
+</html>
+

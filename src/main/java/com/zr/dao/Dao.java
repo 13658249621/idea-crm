@@ -1,0 +1,720 @@
+package com.zr.dao;
+
+/**
+ * 数据库的相关操作
+ **/
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.zr.model.DeptInfo;
+import com.zr.model.PostInfo;
+import com.zr.model.UserInfo;
+import com.zr.model.WorkersInfo;
+import com.zr.util.SqlBean;
+
+public class Dao {
+
+    private SqlBean db = new SqlBean();
+    private Connection conn;
+    private PreparedStatement stmt = null;
+
+    /**
+     * @exception检测数据库连接状态
+     *
+     **/
+    public void checkConnect() {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = db.getConnection();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @exception检验登录是否正确
+     * @return boolean
+     *
+     **/
+    public boolean isRight(String name, String pass) {
+        checkConnect();
+        String sql = "select * from tb_user where uid = '" + name + "' and password = '" + pass + "'";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                conn.close();
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * @exception通过uid获得权限
+     * @return boolean
+     *
+     **/
+    public String getUserPowerById(String uid) {
+        checkConnect();
+        String power = "";
+        String sql = "select power from tb_user where uid = '" + uid + "'";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                power = rs.getString("power");
+                conn.close();
+                return power;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return power;
+    }
+
+    /**
+     * @exception通过uid获得用户名
+     * @return boolean
+     *
+     **/
+    public String getUserNameById(String uid) {
+        checkConnect();
+        String name = "";
+        String sql = "select * from tb_user where uid = '" + uid + "'";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                name = rs.getString("uname");
+                conn.close();
+                return name;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
+
+    /**
+     * @exception通过用户名和权限查找用户的list集合
+     * @return list
+     *
+     **/
+    public List<UserInfo> getAllUser(String uName, String power) {
+        checkConnect();
+        List<UserInfo> list_user = new ArrayList<UserInfo>();
+        String sql = "";
+        if (uName == null && power == null) {
+            sql = "select * from tb_user";
+        } else if (uName == null) {
+            if (power.equals("全部")) {
+                sql = "select * from tb_user";
+            } else {
+                sql = "select * from tb_user where power = '" + power + "'";
+            }
+        } else {
+            if (uName.equals("")) {
+                if (power.equals("全部")) {
+                    sql = "select * from tb_user";
+                } else {
+                    sql = "select * from tb_user where power = '" + power + "'";
+                }
+            } else {
+                if (power.equals("全部")) {
+                    sql = "select * from tb_user where uname like '%" + uName + "%'";
+                } else {
+                    sql = "select * from tb_user where uname like '%" + uName + "%' and power = '" + power + "'";
+                }
+            }
+
+        }
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                UserInfo user = new UserInfo();
+                user.setUid(rs.getString("uid"));
+                user.setUname(rs.getString("uname"));
+                user.setPassword(rs.getString("password"));
+
+                user.setPower(rs.getString("power"));
+                list_user.add(user);
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list_user;
+    }
+
+    /**
+     * @exception添加用户信息
+     * @return boolean
+     *
+     **/
+    public boolean addUser(String uid, String uname, String password, String state, String time, String power) {
+        checkConnect();
+        String sql = "insert into tb_user (uid,uname,password,power) values (?,?,?,?)";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, uid);
+            stmt.setString(2, uname);
+            stmt.setString(3, password);
+            stmt.setString(4, power);
+            stmt.executeUpdate();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * @exception通过普通用户删除用户信息(需要密码)
+     * @return boolean
+     *
+     **/
+    public boolean deleteUserByUser(String uid, String password) {
+        checkConnect();
+        String sql = "delete from tb_user where uid = ? and password = ?";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, uid);
+            stmt.setString(2, password);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * @exception通过管理员删除用户信息(不需要密码)
+     * @return boolean
+     *
+     **/
+    public boolean deleteUserByAdmin(String uid) {
+        checkConnect();
+        String sql = "delete from tb_user where uid = ?";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, uid);
+            stmt.executeUpdate();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * @exception获得员工id最大值
+     * @return boolean
+     *
+     **/
+    public int getMaxWorkerId() {
+        checkConnect();
+        String sql = "select max(wId) as maxNo from tb_workers";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("maxNo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * @exception获得所有员工信息
+     * @return list
+     *
+     **/
+    public List<WorkersInfo> getAllWorker(String wName, String dName) {
+        int did1 = 0;
+        if (dName != null) {
+            if (!dName.equals("全部")) {
+                did1 = getDeptIdByName(dName);
+                System.out.println(did1);
+            }
+        }
+
+        checkConnect();
+        List<WorkersInfo> list_workers = new ArrayList<WorkersInfo>();
+        String sql = "";
+        if (wName == null && dName == null) {
+            sql = "select * from tb_workers";
+        } else if (wName == null) {
+            sql = "select * from tb_workers where did = " + did1;
+        } else {
+            if (dName.equals("全部")) {
+                sql = "select * from tb_workers where wName like '%" + wName + "%'";
+            } else {
+                sql = "select * from tb_workers where did = " + did1 + " and wName like '%" + wName + "%'";
+            }
+        }
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int did = rs.getInt("did");
+                int pid = rs.getInt("pid");
+                WorkersInfo worker = new WorkersInfo();
+                worker.setwId(rs.getInt("wId"));
+                worker.setwName(rs.getString("wName"));
+                worker.setAddress(rs.getString("address"));
+                worker.setBirthday(rs.getString("birthday"));
+                worker.setCreatTime(rs.getString("creatTime"));
+                worker.setDid(did);
+                worker.setEducation(rs.getString("education"));
+                worker.setEmail(rs.getString("email"));
+                worker.setFamily(rs.getString("family"));
+                worker.setIdNumber(rs.getString("idNumber"));
+                worker.setInterests(rs.getString("interests"));
+                worker.setMajor(rs.getString("major"));
+                worker.setPhone(rs.getString("phone"));
+                worker.setPid(pid);
+                worker.setPolitical(rs.getString("political"));
+                worker.setPostcode(rs.getString("postCode"));
+                worker.setQq(rs.getString("qq"));
+                worker.setRemarks(rs.getString("remarks"));
+                worker.setSex(rs.getString("sex"));
+                worker.setdName(getDeptNameById(did));
+                worker.setPName(getPostNameById(pid));
+                list_workers.add(worker);
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list_workers;
+    }
+
+    /**
+     * @exception删除员工
+     * @return boolean
+     *
+     **/
+    public boolean deleteWorker(String wId) {
+        checkConnect();
+        String sql = "delete from tb_workers where wId = " + wId;
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    /**
+     * @exception添加报修信息
+     * @return boolean
+     *
+     **/
+    public boolean addFix(String danyuan,String louceng,String fangjian,String date) {
+        int fixid = getMaxfixid() + 1;
+        checkConnect();
+        String sql = "insert into fix (fixid,danyuan,louceng,fangjian,date"
+                + ") values (?,?,?,?,?)";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, fixid);
+            stmt.setString(2,danyuan);
+            stmt.setString(3,louceng);
+            stmt.setString(4,fangjian);
+            stmt.setString(5,date);
+            if (stmt.execute()) {
+                conn.close();
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    /**
+     * @exception添加员工信息
+     * @return boolean
+     *
+     **/
+    public boolean addWorker(String wName, String sex, String phone, String email, int pid,
+                             String education, String idNumber, String address, String creatTime, String birthday, String interests,
+                             String qq, String political, String postcode, String family, String major, String remarks, int did) {
+        int wId = getMaxWorkerId() + 1;
+        checkConnect();
+        String sql = "insert into tb_workers (wId,wName,sex,phone,email,pid,education,idNumber, "
+                + "address,creatTime,birthday,interests,qq,political,postcode,family,major,remarks,did) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, wId);
+            stmt.setString(2, wName);
+            stmt.setString(3, sex);
+            stmt.setString(4, phone);
+            stmt.setString(5, email);
+            stmt.setInt(6, pid);
+            stmt.setString(7, education);
+            stmt.setString(8, idNumber);
+            stmt.setString(9, address);
+            stmt.setString(10, creatTime);
+            stmt.setString(11, birthday);
+            stmt.setString(12, interests);
+            stmt.setString(13, qq);
+            stmt.setString(14, political);
+            stmt.setString(15, postcode);
+            stmt.setString(16, family);
+            stmt.setString(17, major);
+            stmt.setString(18, remarks);
+            stmt.setInt(19, did);
+            if (stmt.execute()) {
+                conn.close();
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    /**
+     * @exception获得部门id最大值
+     * @return boolean
+     *
+     **/
+    public int getMaxDeptId() {
+        checkConnect();
+        String sql = "select max(did) as maxNo from tb_dept";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("maxNo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    /**
+     * @exception获得报修id最大值
+     * @return boolean
+     *
+     **/
+    public int getMaxfixid() {
+        checkConnect();
+        String sql = "select max(fixid) as maxNo from fix";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("maxNo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * @exception获得部门id
+     * @return int
+     *
+     **/
+    public int getDeptIdByName(String name) {
+        checkConnect();
+        String sql = "select did from tb_dept where name = '" + name + "'";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("did");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * @exception获得部门名
+     * @return String
+     *
+     **/
+    public String getDeptNameById(int did) {
+        checkConnect();
+        String sql = "select name from tb_dept where did = '" + did + "'";
+        try {
+            PreparedStatement stmt1 = conn.prepareStatement(sql);
+            ResultSet rs = stmt1.executeQuery();
+            if (rs.next()) {
+                return rs.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    /**
+     * @exception通过部门名查找部门的list集合
+     * @return list
+     *
+     **/
+    public List<DeptInfo> getAllDept(String deptName) {
+        checkConnect();
+        List<DeptInfo> list_dept = new ArrayList<DeptInfo>();
+        String sql = "";
+        if (deptName == null) {
+            sql = "select * from tb_dept";
+        } else {
+            sql = "select * from tb_dept where name like '%" + deptName + "%'";
+        }
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                DeptInfo dept = new DeptInfo();
+                dept.setDid(rs.getInt("did"));
+                dept.setName(rs.getString("name"));
+                dept.setInfo(rs.getString("info"));
+                list_dept.add(dept);
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list_dept;
+    }
+
+    /**
+     * @exception删除部门
+     * @return boolean
+     *
+     **/
+    public boolean deleteDept(String did) {
+        checkConnect();
+        String sql = "delete from tb_dept where did = " + did;
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * @exception添加部门信息
+     * @return boolean
+     *
+     **/
+    public boolean addDept(String name, String info) {
+        int did = getMaxDeptId() + 1;
+        checkConnect();
+        String sql = "insert into tb_dept (did,name,info) values (?,?,?)";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, did);
+            stmt.setString(2, name);
+            stmt.setString(3, info);
+            stmt.executeUpdate();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * @exception获得公告id最大值
+     * @return boolean
+     *
+     **/
+    public int getMaxNoticeId() {
+        checkConnect();
+        String sql = "select max(nid) as maxNo from tb_notice";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("maxNo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * @exception添加公告信息
+     * @return boolean
+     *
+     **/
+    public boolean addNotice(String name, String content, String time, String uid) {
+        int nid = getMaxNoticeId() + 1;
+        checkConnect();
+        String sql = "insert into tb_notice (nid,name,content,time,uid) values (?,?,?,?,?)";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, nid);
+            stmt.setString(2, name);
+            stmt.setString(3, content);
+            stmt.setString(4, time);
+            stmt.setString(5, uid);
+            stmt.executeUpdate();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    public int getMaxPostId() {
+        checkConnect();
+        String sql = "select max(pid) as maxNo from tb_post";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("maxNo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * @exception通过职位编号获得职位名称
+     * @return String
+     *
+     **/
+    public String getPostNameById(int pid) {
+        checkConnect();
+        String sql = "select name from tb_post where pid = '" + pid + "'";
+        try {
+            PreparedStatement stmt1 = conn.prepareStatement(sql);
+            ResultSet rs = stmt1.executeQuery();
+            if (rs.next()) {
+                return rs.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    /**
+     * @exception通过职位名获得职位编号
+     * @return boolean
+     *
+     **/
+    public int getPostIdByName(String name) {
+        checkConnect();
+        String sql = "select pid from tb_post where name = '" + name + "'";
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("pid");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * @exception通过职位名查找职位的list集合
+     * @return list
+     *
+     **/
+    public List<PostInfo> getAllPostt(String postName) {
+        checkConnect();
+        List<PostInfo> list_post = new ArrayList<PostInfo>();
+        String sql = "";
+        if (postName == null) {
+            sql = "select * from tb_post";
+        } else {
+            sql = "select * from tb_post where name like '%" + postName + "%'";
+        }
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                PostInfo post = new PostInfo();
+                post.setPid(rs.getInt("pid"));
+                post.setName(rs.getString("name"));
+                post.setInfo(rs.getString("info"));
+                list_post.add(post);
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list_post;
+    }
+
+    /**
+     * @exception添加职位信息
+     * @return boolean
+     *
+     **/
+    public boolean addPost(String name, String info) {
+        int pid = getMaxPostId() + 1;
+        checkConnect();
+        String sql = "insert into tb_post (pid,name,info) values (?,?,?)";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, pid);
+            stmt.setString(2, name);
+            stmt.setString(3, info);
+            stmt.executeUpdate();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * @exception删除职位
+     * @return boolean
+     *
+     **/
+    public boolean deletePost(String pid) {
+        checkConnect();
+        String sql = "delete from tb_post where pid = " + pid;
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+}
