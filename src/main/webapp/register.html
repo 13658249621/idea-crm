@@ -199,6 +199,48 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div><!--手机号格式错误提示框-->
+<div class="modal fade" id="IsUnameUsedcheck" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="UnameUsed">
+                    提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                用户名已被注册，请重新输入!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div><!--用户名已存在错误提示框-->
+<div class="modal fade" id="RegisteSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="backlogin()">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="Registed">
+                    提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                注册成功，点击确认后会自动跳转到登录页面。
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="backlogin()">确认
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div><!--用户名已存在错误提示框-->
 </body>
 <script type="text/javascript">
     $(function () {
@@ -222,33 +264,33 @@
             }else if (!phoneRegex.test(phone)){
                 $('#phonecheck').modal();
             }
-            else {
-                console.log("something happend")
-            } //用户名格式校验
-
-            $.ajax({
-                url: "register",
-                type: "post",
-                async: true,
-                data: {
-                    "uname": uname,
-                    "upassword": password,
-                    "danyuan": danyuan,
-                    "louceng": louceng,
-                    "fangjian": fangjian,
-                    "phone": phone
-                },
-                dataType: "json",
-                success: function (data) {
-                    //获取通过resp回写的数据
-                    if (data.successcode == "200") {
-                        window.location.href = "index.html";
-                        console.log("注册成功");
-                    } else {
-                        console.log("注册失败")
+            else { 
+                console.log("开始执行注册请求")
+                $.ajax({
+                    url: "Registe",
+                    type: "post",
+                    async: true,
+                    data: {
+                        "uname": uname,
+                        "upassword": password,
+                        "danyuan": danyuan,
+                        "louceng": louceng,
+                        "fangjian": fangjian,
+                        "phone": phone
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        //获取通过resp回写的数据
+                        if (data.successcode == "200") {
+                            console.log(data.successcode);
+                            $('#RegisteSuccess').modal();
+                        } else if (data.successcode== "300") {
+                            console.log(data.successcode);
+                            $('#IsUnameUsedcheck').modal();
+                        }
                     }
-                }
-            });//ajax请求
+                });//ajax请求
+            } //用户名格式校验
             //if else
         }/**btn2的function**/)
     });//
