@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,47 +7,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
-    <title>主页</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
+    <link rel="stylesheet" type="text/css" href="themes/icon.css">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]>
-    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-        var sleep = function(time) {
-            var startTime = new Date().getTime() + parseInt(time, 10);
-            while(new Date().getTime() < startTime) {}
-        };
-        function permisson() {
-            var permission="no";
-            if(window.localStorage){
-                console.log("浏览器支持localstorage");
-                return false;
-            }else{
-                //主逻辑业务
-            }
-
-            if (permission =="no"){
-                console.log("没有权限");
-            }
-        }
-    </script>
+    <title>主页</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table.js" ;></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
 </head>
 
 <body style="background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582826068275&di=ceda3df1e2da2b76833288340f0d9981&imgtype=0&src=http%3A%2F%2Fimg.1ppt.com%2Fuploads%2Fallimg%2F1511%2F1_151125155652_1.jpg) no-repeat center ; background-size: cover;">
@@ -119,12 +93,12 @@
 
         <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar">
             <div class="list-group" style="margin-top: 60px">
-                <a href="#"  disabled="true" class="list-group-item active" style="background-color: #3c3c3c">快速导航</a>
-                <a href="fix.html" class="list-group-item"><p >我要报修</p></a>
+                <a href="#" disabled="true" class="list-group-item active" style="background-color: #3c3c3c">快速导航</a>
+                <a href="fix.html" class="list-group-item"><p>我要报修</p></a>
                 <a href="parking.html" class="list-group-item"><p>查询车位</p></a>
                 <a href="pay.html" class="list-group-item"><p>缴费信息</p></a>
                 <a href="suggestion.html" class="list-group-item"><p>投诉和建议</p></a>
-                <a href="notice.html" class="list-group-item" ><p>查看社区公告</p></a>
+                <a href="notice.html" class="list-group-item"><p>查看社区公告</p></a>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;">
                     <option disabled selected hidden>业主管理</option>
@@ -182,14 +156,16 @@
 
 </div><!--/.container-->
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-<script src="offcanvas.js"></script>
+
 </body>
+<script type="text/javascript">
+ function testsession() {
+        console.log("开始执行");
+        var GlobolUname = sessionStorage.getItem('uname');
+        console.log(GlobolUname);
+    }
+    window.onload=testsession();
+
+
+</script>
 </html>
