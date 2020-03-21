@@ -135,4 +135,13 @@
         <servlet-name>EditFix</servlet-name>
         <url-pattern>/EditFix</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Registe</servlet-name>
+        <servlet-class>com.zr.controller.regiteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Registe</servlet-name>
+        <url-pattern>/Registe</url-pattern>
+    </servlet-mapping>
 </web-app>
