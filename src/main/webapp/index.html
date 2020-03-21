@@ -77,7 +77,6 @@
 
 </body>
 <script type="text/javascript">
-
     $(function () {
         $("#btn1").click(function () {
             console.log("1");
@@ -94,6 +93,7 @@
                     //获取通过resp回写的数据
                     if (data.successcode == 200) {
                         window.location.href = "home.html";
+                        sessionStorage.setItem('uname',uname);
 
                     } else {
                         $('#myModal').modal();

@@ -6,7 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b1a00e5-4a54-41c7-be6f-4d79438aa4c0" name="Default Changelist" comment="" />
+    <list default="true" id="0b1a00e5-4a54-41c7-be6f-4d79438aa4c0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,10 +22,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -44,6 +53,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/bootstrap/js" />
@@ -267,6 +277,8 @@
       <workItem from="1584178022111" duration="4267000" />
       <workItem from="1584256516883" duration="23726000" />
       <workItem from="1584448934345" duration="6392000" />
+      <workItem from="1584614959998" duration="4359000" />
+      <workItem from="1584800286914" duration="3651000" />
     </task>
     <servers />
   </component>
@@ -298,22 +310,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="731" y="289" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582895307779" />
-    <state width="1070" height="204" key="GridCell.Tab.0.bottom" timestamp="1584460476208">
+    <state width="1070" height="204" key="GridCell.Tab.0.bottom" timestamp="1584807383046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584460476208" />
-    <state width="1070" height="204" key="GridCell.Tab.0.center" timestamp="1584460476208">
+    <state width="1070" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584807383046" />
+    <state width="1070" height="204" key="GridCell.Tab.0.center" timestamp="1584807383046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584460476208" />
-    <state width="1070" height="204" key="GridCell.Tab.0.left" timestamp="1584460476207">
+    <state width="1070" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584807383046" />
+    <state width="1070" height="204" key="GridCell.Tab.0.left" timestamp="1584807383046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584460476207" />
-    <state width="1070" height="204" key="GridCell.Tab.0.right" timestamp="1584460476208">
+    <state width="1070" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584807383046" />
+    <state width="1070" height="204" key="GridCell.Tab.0.right" timestamp="1584807383046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584460476208" />
+    <state width="1070" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584807383046" />
     <state width="1070" height="204" key="GridCell.Tab.1.bottom" timestamp="1584287547707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -350,10 +362,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="587" y="156" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582864369472" />
-    <state x="745" y="379" key="com.intellij.ide.util.TipDialog" timestamp="1584448934258">
+    <state x="731" y="383" key="com.intellij.ide.util.TipDialog" timestamp="1584807180823">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="745" y="379" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584448934258" />
+    <state x="731" y="383" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584807180823" />
+    <state x="685" y="476" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584800298042">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="685" y="476" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584800298042" />
     <state x="344" y="217" key="new project wizard" timestamp="1582895314727">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
