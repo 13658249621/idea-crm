@@ -24,7 +24,7 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-table.js" ;></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
-
+    <script type="text/javascript" src="js/Util.js"></script>
 </head>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -104,7 +104,7 @@
         </div>
         <div class="modal-footer">
             <div class="form-group">
-                <button id="btn1" type="button" class="btn btn-primary form-control" onclick="backlogin()">登录</button>
+                <button id="btn1" type="button" class="btn btn-primary form-control" onclick="toIndex()">登录</button>
             </div>
             <div class="form-group">
                 <button id="registe" type="button" class="btn btn-default form-control">注册</button>
@@ -224,7 +224,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="backlogin()">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="toIndex()">
                     &times;
                 </button>
                 <h4 class="modal-title" id="Registed">
@@ -235,12 +235,12 @@
                 注册成功，点击确认后会自动跳转到登录页面。
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="backlogin()">确认
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="toIndex()">确认
                 </button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
-</div><!--用户名已存在错误提示框-->
+</div><!--注册成功提示框-->
 </body>
 <script type="text/javascript">
     $(function () {
@@ -285,7 +285,6 @@
                             console.log(data.successcode);
                             $('#RegisteSuccess').modal();
                         } else if (data.successcode== "300") {
-                            console.log(data.successcode);
                             $('#IsUnameUsedcheck').modal();
                         }
                     }
@@ -295,9 +294,6 @@
         }/**btn2的function**/)
     });//
 
-    function backlogin() {
-        window.location.href="index.html";
-    }
 </script>
 </html>
 
