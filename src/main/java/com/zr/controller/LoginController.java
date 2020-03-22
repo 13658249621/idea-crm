@@ -23,8 +23,9 @@ public class LoginController extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		String uname = req.getParameter("queryParams");
 		JSONObject data = new JSONObject();
-		data.put("successcode", 200);
+		data.put("successcode", 300);
 		data.put("message", "登录成功");
+		data.put("power", "物业管理人员");
 		out.write(data.toString());
 		out.flush();
 		out.close();
