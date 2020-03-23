@@ -23,7 +23,7 @@ public class regiteController extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String uname = req.getParameter("queryParams");
         JSONObject data = new JSONObject();
-        data.put("successcode", 300);
+        data.put("successcode", 200);
         data.put("message", "用户名已存在");
         out.write(data.toString());
         out.flush();
