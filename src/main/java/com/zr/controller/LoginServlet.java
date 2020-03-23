@@ -34,9 +34,9 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("uid",uid);
 			session.setAttribute("power",dao.getUserPowerById(uid));
 			session.setAttribute("uname", dao.getUserNameById(uid));
-			resp.sendRedirect("home.jsp");
+			resp.sendRedirect("home.html");
 		}else {
-			out.print("<script>alert('账号或密码错误!');window.location.href='index.jsp'</script>");
+			//out.print("<script>alert('账号或密码错误!');window.location.href='index.html'</script>");
 		}
 		
 	}
