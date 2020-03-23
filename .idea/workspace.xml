@@ -7,9 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b1a00e5-4a54-41c7-be6f-4d79438aa4c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/Util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/ProprietorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/MyParkingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/MyParkingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/regiteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/regiteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/EditFix.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditFix.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/EditHouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditHouse.html" afterDir="false" />
@@ -28,14 +30,13 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageSugg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageSugg.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageUser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/fix.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/fix.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/menu.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/notice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/parking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parking.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/proprietor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/proprietor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/proprietor.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/suggestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/suggestion.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,8 +49,8 @@
       <list>
         <option value="Jsp File" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -252,7 +253,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -306,6 +307,10 @@
       <workItem from="1584614959998" duration="4359000" />
       <workItem from="1584800286914" duration="3651000" />
       <workItem from="1584849043414" duration="13931000" />
+      <workItem from="1584885544728" duration="6000" />
+      <workItem from="1584885999992" duration="1025000" />
+      <workItem from="1584888435266" duration="511000" />
+      <workItem from="1584957909884" duration="12720000" />
     </task>
     <servers />
   </component>
@@ -329,30 +334,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="937" y="292" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582624611120" />
-    <state x="674" y="344" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584282167891">
+    <state x="674" y="344" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584977602312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="674" y="344" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584282167891" />
+    <state x="674" y="344" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584977602312" />
     <state x="731" y="289" key="FileChooserDialogImpl" timestamp="1582895307779">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="731" y="289" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582895307779" />
-    <state width="1070" height="204" key="GridCell.Tab.0.bottom" timestamp="1584875051117">
+    <state width="1070" height="203" key="GridCell.Tab.0.bottom" timestamp="1584977539596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584875051117" />
-    <state width="1070" height="204" key="GridCell.Tab.0.center" timestamp="1584875051117">
+    <state width="1070" height="203" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584977539596" />
+    <state width="1070" height="203" key="GridCell.Tab.0.center" timestamp="1584977539596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584875051117" />
-    <state width="1070" height="204" key="GridCell.Tab.0.left" timestamp="1584875051117">
+    <state width="1070" height="203" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584977539596" />
+    <state width="1070" height="203" key="GridCell.Tab.0.left" timestamp="1584977539596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584875051117" />
-    <state width="1070" height="204" key="GridCell.Tab.0.right" timestamp="1584875051117">
+    <state width="1070" height="203" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584977539596" />
+    <state width="1070" height="203" key="GridCell.Tab.0.right" timestamp="1584977539596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1070" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584875051117" />
+    <state width="1070" height="203" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584977539596" />
     <state width="1070" height="204" key="GridCell.Tab.1.bottom" timestamp="1584287547707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -389,14 +394,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="587" y="156" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582864369472" />
-    <state x="548" y="395" key="com.intellij.ide.util.TipDialog" timestamp="1584849047461">
+    <state x="548" y="395" key="com.intellij.ide.util.TipDialog" timestamp="1584957928241">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="548" y="395" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584849047461" />
+    <state x="548" y="395" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584957928241" />
     <state x="685" y="476" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584800298042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="476" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584800298042" />
+    <state x="654" y="145" width="786" height="801" key="find.popup" timestamp="1584966004410">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="654" y="145" width="786" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584966004410" />
     <state x="344" y="217" key="new project wizard" timestamp="1582895314727">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
