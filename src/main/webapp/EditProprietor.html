@@ -1,3 +1,5 @@
+
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,76 +8,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
-    <title>编辑业主信息</title>
-    <script src="js/jquery-3.4.1.js"/>
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="bootstrap/css/bootstrap-table.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="themes/gray/easyui.css">
+    <link rel="stylesheet" type="text/css" href="themes/icon.css">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]>
-    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-
-
-        function quit() {
-            window.location.href = "home.html";
-        }
-
-        function getform() {
-            {
-                var danyuan = document.getElementById("danyuan").value;
-                var loucneg = document.getElementById("louceng").value;
-                var fangjian = document.getElementById("fangjian").value;
-                var date = document.getElementById("date").value;
-                var info = document.getElementById("info").value;
-                var phone = document.getElementById("phone").value;
-                alert(danyuan + loucneg + fangjian + phone + info + date)
-                $.ajax({
-                    url: "addFix",
-                    type: "post",
-                    data: {
-                        "danyuan": danyuan,
-                        "louceng": loucneg,
-                        "fangjian": fangjian,
-                        "phone": phone,
-                        "info": info,
-                        "date": date
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        if (data.successcode == "200") {
-                            console.log("addFix Success");
-                        } else {
-                            console.log("addfix failed")
-                        }
-                    }
-                })
-                alert("单元为" + danyuan + "\n楼层为" + loucneg + "\n房间号为" + fangjian + "\n日期为" + date);
-            }
-
-        }
-
-
-    </script>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>编辑业主信息</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table.js";></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="js/Util.js"></script>
 </head>
 
 <body style=" background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582826068275&di=ceda3df1e2da2b76833288340f0d9981&imgtype=0&src=http%3A%2F%2Fimg.1ppt.com%2Fuploads%2Fallimg%2F1511%2F1_151125155652_1.jpg) no-repeat center ; background-size: cover;">
@@ -327,14 +276,50 @@
 </div>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
 <script src="offcanvas.js"></script>
 </body>
+<script type="text/javascript">
+
+
+    function quit() {
+        window.location.href = "home.html";
+    }
+
+    function getform() {
+        {
+            var danyuan = document.getElementById("danyuan").value;
+            var loucneg = document.getElementById("louceng").value;
+            var fangjian = document.getElementById("fangjian").value;
+            var date = document.getElementById("date").value;
+            var info = document.getElementById("info").value;
+            var phone = document.getElementById("phone").value;
+            alert(danyuan + loucneg + fangjian + phone + info + date)
+            $.ajax({
+                url: "addFix",
+                type: "post",
+                data: {
+                    "danyuan": danyuan,
+                    "louceng": loucneg,
+                    "fangjian": fangjian,
+                    "phone": phone,
+                    "info": info,
+                    "date": date
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.successcode == "200") {
+                        console.log("addFix Success");
+                    } else {
+                        console.log("addfix failed")
+                    }
+                }
+            })
+            alert("单元为" + danyuan + "\n楼层为" + loucneg + "\n房间号为" + fangjian + "\n日期为" + date);
+        }
+    };
+
+    window.onload=checksessoin();
+    window.onload=CheckPower;
+</script>
 </html>
