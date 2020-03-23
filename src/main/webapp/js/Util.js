@@ -5,7 +5,17 @@ function checksessoin() {
         window.location.href="index.html";
     }
 };//检查是否登录
+function GetValue(parameter1,parameter2) {
+    var itemString=JSON.stringify(parameter1);
 
+    var test1=itemString.replace("[","");//处理json字符串外中括号
+    var ItemObj=test1.replace("]","");//处理json字符串外中括号
+
+    var jsObject = JSON.parse(ItemObj);//把ItemObj转换成Json对象
+    var ReturnValue=eval('jsObject.'+parameter2);
+
+    return ReturnValue;
+}//获取BootStrapTable的某一数据项的值,parameter1是bootstrap table接收数据rows中某一项的值，parameter2是rows中某一项的字段，比如uname，payname，uid等
 function toIndex() {
     window.location.href="index.html";
 };//回到登录页面
@@ -37,3 +47,4 @@ function CheckPower() {
         ManageUser.style.display="none";
     }
 };//根据权限等级显示不同导航菜单
+
