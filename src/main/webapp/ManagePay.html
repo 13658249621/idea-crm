@@ -22,8 +22,9 @@
     <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-table.js";></script>
+    <script type="text/javascript" src="js/bootstrap-table.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="js/Util.js"></script>
 
 </head>
 
@@ -167,7 +168,7 @@
             singleSelect: true,
             checkboxHeader: true,
             search: true,                      //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            strictSearch: true,
+            strictSearch: false,
             showColumns: false,                 //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
             searchAlign: "left",
@@ -207,28 +208,26 @@
     }//初始化boot strap table
 
     function deleteSelect(){
-
-        var a = $('#parking-table').bootstrapTable('getSelections');
-        if (a.length <= 0){
-            alert("请至少选择一行");
+        var PayItem = $('#parking-table').bootstrapTable('getSelections');
+        if (PayItem.length <= 0){
+            alert("请选择您要删除的一项");
         }else{
-            console.log(a);
-            console.log(JSON.stringify(a));
+            var uname=GetValue(PayItem,"uname");
+            var payid=GetValue(PayItem,"payid")
+            console.log("Uname是:"+uname);
+            console.log("Payid是:"+payid);
             $.ajax({
                 type : "POST", //传数据的方式
                 url : "AllPay", //servlet地址
                 data : {
-                    "pid": JSON.stringify(a),
-                    "postName" : $('#posttName').val(),
+                    "payid": payid
                 }, //传的数据  form表单 里面的数据
                 success : function(result) { //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
                     initBootstrapTable();
                 }
             });
         }
-    }
-
-
+    };//删除缴费信息请求
 
     function post(){
         $("#parking-table").bootstrapTable('destroy');
@@ -250,7 +249,7 @@
             singleSelect:true,
             checkboxHeader:true,
             search: true,                      //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            strictSearch: true,
+            strictSearch: false,
             showColumns: false,                 //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
             searchAlign:"left",
@@ -287,8 +286,9 @@
                 }
             ],
         });
-    }//查看我的车位
-
+    };//查看我的车位
+    window.onload=checksessoin();
+    window.onload=CheckPower;
     window.onload=initBootstrapTable();//初始化bootstrap-table，查询所有车位信息
 </script>
 
