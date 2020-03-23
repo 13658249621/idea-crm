@@ -24,7 +24,7 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-table.js";></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
-
+    <script type="text/javascript" src="js/Util.js"></script>
 </head>
 
 <body  style="background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582826068275&di=ceda3df1e2da2b76833288340f0d9981&imgtype=0&src=http%3A%2F%2Fimg.1ppt.com%2Fuploads%2Fallimg%2F1511%2F1_151125155652_1.jpg) no-repeat center ; background-size: cover;">
@@ -170,7 +170,7 @@
             singleSelect: true,
             checkboxHeader: true,
             search: true,                      //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            strictSearch: true,
+            strictSearch: false,
             showColumns: false,                 //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
             searchAlign: "left",
@@ -224,7 +224,25 @@
             });
         }
     }
-
+    function deleteSelect(){
+        var NoticeItem = $('#parking-table').bootstrapTable('getSelections');
+        if (NoticeItem.length <= 0){
+            alert("请选择您要删除的一项");
+        }else{
+            var noticeid=GetValue(NoticeItem,"noticeid");
+            console.log("noticeid是:"+noticeid);
+            $.ajax({
+                type : "POST", //传数据的方式
+                url : "AllPay", //servlet地址
+                data : {
+                    "noticeid": noticeid
+                }, //传的数据  form表单 里面的数据
+                success : function(result) { //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
+                    initBootstrapTable();
+                }
+            });
+        }
+    };//删除公告信息请求
 
 
     function post(){
@@ -247,7 +265,7 @@
             singleSelect:true,
             checkboxHeader:true,
             search: true,                      //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            strictSearch: true,
+            strictSearch: false,
             showColumns: false,                 //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
             searchAlign:"left",
@@ -279,7 +297,8 @@
             ],
         });
     }//查看我的车位
-
+    window.onload=checksessoin();
+    window.onload=CheckPower;
     window.onload=initBootstrapTable();//初始化bootstrap-table，查询所有车位信息
 </script>
 
