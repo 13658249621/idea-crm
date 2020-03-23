@@ -42,8 +42,6 @@ public class MyParkingController extends HttpServlet {
         out.flush();
         out.close();
 
-        out.flush();
-        out.close();
     }
 
 
