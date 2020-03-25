@@ -85,6 +85,32 @@
         <servlet-name>AllPay</servlet-name>
         <url-pattern>/AllPay</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AllHouse</servlet-name>
+        <servlet-class>com.zr.controller.SearchAllHouse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllHouse</servlet-name>
+        <url-pattern>/AllHouse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AllNotice</servlet-name>
+        <servlet-class>com.zr.controller.AllNoticeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllNotice</servlet-name>
+        <url-pattern>/AllNotice</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AllSugg</servlet-name>
+        <servlet-class>com.zr.controller.AllSuggController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllSugg</servlet-name>
+        <url-pattern>/AllSugg</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>EditFix</servlet-name>
