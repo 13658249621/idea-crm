@@ -26,8 +26,15 @@ public class SearchAllPayController extends HttpServlet {
         String res="true";
         List<PayInfo> list_parking = new ArrayList<PayInfo>();
         PayInfo payInfo = new PayInfo();
+        PayInfo payInfo2 = new PayInfo();
+        payInfo2.setPayid("2");
+        payInfo2.setPayname("物业管理费2");
+        payInfo2.setPaytime("2020-03-16");
+        payInfo2.setPrice("188");
+        payInfo2.setState("已缴");
+        payInfo2.setUname("卡黑");
         payInfo.setPayid("1");
-        payInfo.setPayname("物业管理费");
+        payInfo.setPayname("物业管理费1");
         payInfo.setPaytime("2020-03-10");
         payInfo.setPrice("1466");
         payInfo.setState("待缴");
@@ -37,17 +44,16 @@ public class SearchAllPayController extends HttpServlet {
         list_parking.add(payInfo);
         list_parking.add(payInfo);
         list_parking.add(payInfo);
-        list_parking.add(payInfo);
-        list_parking.add(payInfo);
-        list_parking.add(payInfo);
-
-        JSONObject data=new JSONObject();
+        list_parking.add(payInfo2);
+        list_parking.add(payInfo2);
+        list_parking.add(payInfo2);
+        JSONObject data=new JSONObject();//创建返回数据 json对象 data
         data.put("successcode",200);
         data.put("total",list_parking.size());
         data.put("rows",list_parking);
-        out.write(data.toString());
+        out.write(data.toString()); //data转换成json 字符串返回给前端
         out.flush();
-        out.close();
+        out.close();//完成返回，关闭读写流
     }
 
 }
