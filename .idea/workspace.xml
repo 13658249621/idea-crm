@@ -7,41 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b1a00e5-4a54-41c7-be6f-4d79438aa4c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/AddParking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/AddParking.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/AddPay.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/AddDeptServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/AllParkingInfoSeverlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/AllParkingInfoSeverlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/SearchAllParkingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/SearchAllParkingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/SearchAllPayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/SearchAllPayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/SearchController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/EditFix.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditFix.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/EditHouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditHouse.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/EditNotice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditNotice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/EditParking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditParking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/EditPay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditPay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/EditProprietor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditProprietor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/EditSugg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditSugg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/EditUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageFix.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageFix.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageHouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageHouse.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageNotice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageNotice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageParking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageParking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ManagePay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManagePay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageProprietor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageProprietor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageSugg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageSugg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ManageUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ManageUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/changeowner.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/fix.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/fix.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/notice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/parking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/suggestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/suggestion.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,11 +221,6 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
             </expand>
             <select />
           </treeState>
@@ -316,6 +278,7 @@
       <workItem from="1584888435266" duration="511000" />
       <workItem from="1584957909884" duration="13385000" />
       <workItem from="1585021362598" duration="21224000" />
+      <workItem from="1585102449150" duration="284000" />
     </task>
     <servers />
   </component>
