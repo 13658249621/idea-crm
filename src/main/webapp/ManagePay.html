@@ -66,12 +66,11 @@
             <div class="col-xs-12 col-sm-12" style="height: fit-content">
 
                 <button class="btn btn-primary" onclick="initBootstrapTable()">查看所有缴费信息</button>
+                <button class="btn btn-primary" onclick="EditSelect()">编辑缴费项目信息</button>
                 <button type="button" class="btn btn-danger" onclick="deleteSelect()" >删除
                 </button>
                 <table id="parking-table" class="table table-bordered" data-toggle="table" >
                 </table>
-
-
                 <p></p>
                 <div>备注</div>
             </div>
@@ -108,13 +107,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
                     <option disabled selected hidden>车位管理</option>
                     <option value="ManageParking.html">查询车位</option>
-                    <option value="EditParking.html">管理车位(添加，删除，编辑)</option>
+                     <option value="AddParking.html">添加车位</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManagePay">
                     <option disabled selected hidden>缴费管理</option>
                     <option value="ManagePay.html">查询缴费</option>
-                    <option value="EditPay.html">编辑缴费项目(针对业主)</option>
+                    <option value="AddPay.html">发布缴费项目</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageSugg">
@@ -214,6 +213,7 @@
         }else{
             var uname=GetValue(PayItem,"uname");
             var payid=GetValue(PayItem,"payid")
+
             console.log("Uname是:"+uname);
             console.log("Payid是:"+payid);
             $.ajax({
@@ -287,6 +287,28 @@
             ],
         });
     };//查看我的车位
+    function EditSelect(){
+        var PayItem = $('#parking-table').bootstrapTable('getSelections');
+        console.log("ParkingItem是:"+PayItem);
+        if (PayItem.length <= 0){
+            alert("请选择您要删除的一项");
+        }else{
+            var payid=GetValue(PayItem,"payid");
+            var uname=GetValue(PayItem,"uname");
+            var state=GetValue(PayItem,"state");
+            var price=GetValue(PayItem,"price");
+            var paytime=GetValue(PayItem,"paytime");
+            var payname=GetValue(PayItem,"payname");
+            console.log("payid是:"+payid);
+            sessionStorage.setItem("PayIdStash",payid);
+            sessionStorage.setItem("PayUnameStash",uname);
+            sessionStorage.setItem("PayStateStash",state);
+            sessionStorage.setItem("PayPriceStash",price);
+            sessionStorage.setItem("Pay_PayTimeStash",paytime);
+            sessionStorage.setItem("PayNameStash",payname);
+            window.location.href="EditPay.html";
+        }
+    };//编辑缴费项目信息，保存payid到sessionstorage，跳转到编辑缴费项目页面
     window.onload=checksessoin();
     window.onload=CheckPower;
     window.onload=initBootstrapTable();//初始化bootstrap-table，查询所有车位信息
