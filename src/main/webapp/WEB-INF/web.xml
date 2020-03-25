@@ -12,24 +12,6 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    <!-- saveUser请求 -->
-    <servlet>
-        <servlet-name>saveUser</servlet-name>
-        <servlet-class>com.zr.controller.UserController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>saveUser</servlet-name>
-        <url-pattern>/saveUser</url-pattern>
-    </servlet-mapping>
-    <!-- selcetStudentMsg请求 -->
-    <servlet>
-        <servlet-name>selcetStudentMsg</servlet-name>
-        <servlet-class>com.zr.controller.SearchController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>selcetStudentMsg</servlet-name>
-        <url-pattern>/selcetStudentMsg</url-pattern>
-    </servlet-mapping>
 
     <!-- showmenu请求 -->
     <servlet>
@@ -54,32 +36,9 @@
     </servlet-mapping>
 
 
-    <servlet>
-        <servlet-name>addDept</servlet-name>
-        <servlet-class>com.zr.controller.AddDeptServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>addDept</servlet-name>
-        <url-pattern>/addDept</url-pattern>
-    </servlet-mapping>
 
-    <servlet>
-        <servlet-name>searchDept</servlet-name>
-        <servlet-class>com.zr.controller.SearchDeptServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>searchDept</servlet-name>
-        <url-pattern>/searchDept</url-pattern>
-    </servlet-mapping>
 
-    <servlet>
-        <servlet-name>deleteDept</servlet-name>
-        <servlet-class>com.zr.controller.DeleteDeptServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>deleteDept</servlet-name>
-        <url-pattern>/deleteDept</url-pattern>
-    </servlet-mapping>
+
 
 
     <servlet>
@@ -143,5 +102,14 @@
     <servlet-mapping>
         <servlet-name>Registe</servlet-name>
         <url-pattern>/Registe</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddParking</servlet-name>
+        <servlet-class>com.zr.controller.AddParking</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddParking</servlet-name>
+        <url-pattern>/AddParking</url-pattern>
     </servlet-mapping>
 </web-app>
