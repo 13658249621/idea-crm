@@ -76,46 +76,17 @@
 
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="danyuan" class="control-label">单元号</label></div>
-                        <div class="col-sm-4">
-                            <select class="form-control" id="danyuan" disabled>
-                                <option>1单元</option>
-                                <option>2单元</option>
-                                <option>3单元</option>
-                                <option>4单元</option>
-                                <option>5单元</option>
-                                <option>6单元</option>
-                            </select>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="danyuan" placeholder="单元" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="louceng" class="control-label">楼层</label></div>
-                        <div class="col-sm-4">
-                            <select id="louceng" class="form-control"disabled>
-                                <option>1楼</option>
-                                <option>2楼</option>
-                                <option>3楼</option>
-                                <option>4楼</option>
-                                <option>5楼</option>
-                                <option>6楼</option>
-                                <option>7楼</option>
-                                <option>8楼</option>
-                                <option>9楼</option>
-                            </select>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="louceng" placeholder="楼层" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="fangjian" class="control-label">房间号</label></div>
-                        <div class="col-sm-4">
-                            <select id="fangjian" class="form-control" disabled>
-                                <option>A-1</option>
-                                <option>A-2</option>
-                                <option>A-3</option>
-                                <option>A-4</option>
-                                <option>B-1</option>
-                                <option>B-2</option>
-                                <option>B-3</option>
-                                <option>B-4</option>
-                            </select>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="fangjian" placeholder="房间" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
@@ -132,7 +103,15 @@
                         <div class="col-sm-4"><input type="text" class="form-control" id="uname" placeholder="所属业主用户名" disabled>
                         </div>
                     </div>
-
+                    <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="phone" class="control-label">联系电话</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="phone" placeholder="联系电话" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="date" class="control-label">上门维修日期</label></div>
+                        <div class="col-sm-4"><input type="date" class="form-control" id="date" placeholder="时间" disabled></div>
+                    </div>
 
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2">
@@ -184,13 +163,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
                     <option disabled selected hidden>车位管理</option>
                     <option value="ManageParking.html">查询车位</option>
-                    <option value="EditParking.html">管理车位(添加，删除，编辑)</option>
+                     <option value="AddParking.html">添加车位</option><>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManagePay">
                     <option disabled selected hidden>缴费管理</option>
                     <option value="ManagePay.html">查询缴费</option>
-                    <option value="EditPay.html">编辑缴费项目(针对业主)</option>
+                    <option value="AddPay.html">发布缴费项目</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageSugg">
@@ -279,8 +258,8 @@
         </div>
     </div>
 </div>
+</body>
 <script type="text/javascript">
-
     function EditFix() {
         {
             var uname="testuname";
@@ -307,10 +286,28 @@
             });
         }
     } //提交修改报修信息
-
+    function GetParkingPlaceStash() {
+        var fixidstash=sessionStorage.getItem("FixIdPlaceStash");
+        var statestash=sessionStorage.getItem("FixStateStash");
+        var danyuanstash=sessionStorage.getItem("FixDanyuanStash");
+        var loucengstash=sessionStorage.getItem("FixLoucengStash");
+        var fangjianstash=sessionStorage.getItem("FixFangjianStash");
+        var phonestash=sessionStorage.getItem("FixPhoneStash");
+        var datestash=sessionStorage.getItem("FixDateStash");
+        var unamestash=sessionStorage.getItem("FixUnameStash");
+        console.log("开始执行GetParlinPlaceStash")
+        document.getElementById("fixid").setAttribute("value",fixidstash.toString());
+        document.getElementById("danyuan").setAttribute("value",danyuanstash.toString());
+        document.getElementById("uname").setAttribute("value",unamestash.toString());
+        document.getElementById("state").setAttribute("value",statestash.toString());
+        document.getElementById("louceng").setAttribute("value",loucengstash.toString());
+        document.getElementById("fangjian").setAttribute("value",fangjianstash.toString());
+        document.getElementById("phone").setAttribute("value",phonestash.toString());
+        document.getElementById("date").setAttribute("value",datestash.toString());
+        console.log("获取到的fixidstash是:"+fixidstash);
+    };//获取sessionstorage中的parkingplace
+    window.onload=GetParkingPlaceStash();
     window.onload=checksessoin();
     window.onload=CheckPower;
 </script>
-
-</body>
 </html>
