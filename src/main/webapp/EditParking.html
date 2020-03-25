@@ -78,8 +78,8 @@
                         <div class="col-sm-2"><label for="state" class="control-label">状态</label></div>
                         <div class="col-sm-4">
                             <select id="state" class="form-control">
-                                <option>已售</option>
-                                <option>待售</option>
+                                <option id="op_done">已售</option>
+                                <option id="op_wait">待售</option>
                             </select>
                         </div>
                     </div>
@@ -133,13 +133,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageHouse">
                     <option disabled selected hidden>楼栋管理</option>
                     <option value="ManageHouse.html">查询楼栋房屋信息</option>
-                    <option value="EditHouse.html">管理楼栋房屋信息</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageFix">
                     <option disabled selected hidden>报修管理</option>
                     <option value="ManageFix.html">查询报修</option>
-                    <option value="EditFix.html">管理报修(删除，编辑)</option>
+                    <option value="EditFix.html" hidden disabled>管理报修(删除，编辑)</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
@@ -157,13 +157,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageSugg">
                     <option disabled selected hidden>投诉和建议管理</option>
                     <option value="ManageSugg.html">查询投诉和建议</option>
-                    <option value="EditSugg.html">删除投诉和建议</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageNotice">
                     <option disabled selected hidden>社区公告管理</option>
                     <option value="ManageNotice.html">查询社区公告</option>
-                    <option value="EditNotice.html">发布社区公告</option>
+                    <option value="AddNotice.html">发布社区公告</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageUser">
@@ -282,7 +282,12 @@
         document.getElementById("parkingplace").setAttribute("value",parkingplacestash.toString());
         document.getElementById("price").setAttribute("value",pricestash.toString());
         document.getElementById("uname").setAttribute("value",unamestash.toString());
-        document.getElementById("state").setAttribute("value",statestash.toString());
+        if (statestash.toString() == "待售") {
+            document.getElementById("op_wait").setAttribute("selected", true);
+        } else if (statestash.toString() == "已售") {
+            document.getElementById("op_done").setAttribute("selected", true);
+        };//根据state判断选中投诉或建议
+
         console.log("获取到的ParkingPlaceStash是:"+parkingplacestash);
     };//获取sessionstorage中的parkingplace
     window.onload=GetParkingPlaceStash();
