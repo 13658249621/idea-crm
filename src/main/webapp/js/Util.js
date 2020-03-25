@@ -13,7 +13,7 @@ function GetValue(parameter1,parameter2) {
 
     var jsObject = JSON.parse(ItemObj);//把ItemObj转换成Json对象
     var ReturnValue=eval('jsObject.'+parameter2);
-
+    console.log(ReturnValue);
     return ReturnValue;
 }//获取BootStrapTable的某一数据项的值,parameter1是bootstrap table接收数据rows中某一项的值，parameter2是rows中某一项的字段，比如uname，payname，uid等
 function toIndex() {
@@ -35,7 +35,7 @@ function CheckPower() {
     var GlobolPower =sessionStorage.getItem('power');
     console.log(GlobolUname);
     console.log(GlobolPower);
-    if (GlobolPower=="业主"){
+    if (GlobolPower =="业主"){
         ManageFix.style.display="none";
         ManageUser.style.display="none";
         ManageParking.style.display="none";
@@ -43,8 +43,10 @@ function CheckPower() {
         ManageHouse.style.display="none";
         ManageNotice.style.display="none";
         ManageSugg.style.display="none";
-    }else if (GlobolPower=="物业管理人员"){
+    }else if (GlobolPower =="物业管理人员"){
         ManageUser.style.display="none";
+    }else if (GlobolPower =="系统管理员"){
+        console.log("您是系统管理员")
     }
 };//根据权限等级显示不同导航菜单
 
