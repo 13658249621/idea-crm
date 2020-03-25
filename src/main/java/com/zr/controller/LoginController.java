@@ -21,11 +21,30 @@ public class LoginController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		PrintWriter out = resp.getWriter();
-		String uname = req.getParameter("queryParams");
+		String uname = req.getParameter("uname");
+		String password = req.getParameter("password");
+		/*if (对比数据库用户名和密码正确){
 		JSONObject data = new JSONObject();
-		data.put("successcode", 200);
-		data.put("message", "登录成功");
-		data.put("power", "物业管理人员");
+		data.put("successcode", 200);//测试数据。successcode具体时间什么需要查询数据库对比uname和password是否正确
+		data.put("message", "登录成功");//测试数据。具体是什么需要查询数据库对比用户名和密码是否正确
+		data.put("power", "物业管理人员");//测试数据。power具体是什么需要查询数据库
+		out.write(data.toString());
+		out.flush();
+		out.close();
+ 		}
+ 		else if(对比数据库用户名和密码错误){
+ 		JSONObject data = new JSONObject();
+		data.put("successcode", 300);//测试数据。successcode具体时间什么需要查询数据库对比uname和password是否正确
+		data.put("message", "用户名或密码错误");//测试数据。具体是什么需要查询数据库对比用户名和密码是否正确//测试数据。power具体是什么需要查询数据库
+		out.write(data.toString());
+		out.flush();
+		out.close();
+ 		}
+ 		else if(对比数据库用户名不存在){返回用户名不存在的对应的数据}*/
+		JSONObject data = new JSONObject();
+		data.put("successcode", 200);//测试数据。successcode具体时间什么需要查询数据库对比uname和password是否正确
+		data.put("message", "登录成功");//测试数据。具体是什么需要查询数据库对比用户名和密码是否正确
+		data.put("power", "系统管理员");//测试数据。power具体是什么需要查询数据库
 		out.write(data.toString());
 		out.flush();
 		out.close();
