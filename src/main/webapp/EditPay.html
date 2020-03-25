@@ -70,7 +70,12 @@
                 <form action="#" class="form-horizontal"> <!--等价于div.container-->
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="payid" class="control-label">缴费编号</label></div>
-                        <div class="col-sm-4"><input type="text" class="form-control" id="payid" placeholder="缴费编号">
+                        <div class="col-sm-4"><input type="text" class="form-control" id="payid" placeholder="缴费编号" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="uname" class="control-label">用户名</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="uname" placeholder="用户名" disabled>
                         </div>
                     </div>
 
@@ -94,8 +99,8 @@
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
-                        <div class="col-sm-2"><label for="date" class="control-label">最迟缴费时间</label></div>
-                        <div class="col-sm-4"><input type="date" class="form-control" id="date" placeholder="最迟缴费时间"></div>
+                        <div class="col-sm-2"><label for="paytime" class="control-label">最迟缴费时间</label></div>
+                        <div class="col-sm-4"><input type="date" class="form-control" id="paytime" placeholder="最迟缴费时间"></div>
                     </div>
 
                     <div class="form-group"><!--div.row-->
@@ -148,13 +153,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
                     <option disabled selected hidden>车位管理</option>
                     <option value="ManageParking.html">查询车位</option>
-                    <option value="EditParking.html">管理车位(添加，删除，编辑)</option>
+                     <option value="AddParking.html">添加车位</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManagePay">
                     <option disabled selected hidden>缴费管理</option>
                     <option value="ManagePay.html">查询缴费</option>
-                    <option value="EditPay.html">编辑缴费项目(针对业主)</option>
+                    <option value="AddPay.html">发布缴费项目</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageSugg">
@@ -244,24 +249,28 @@
     </div>
 </div>
 
+</body>
+
 <script type="text/javascript">
 
     function EditPay() {
         {
-            var date=document.getElementById("date").value;
+            var date=document.getElementById("paytime").value;
             var payid = document.getElementById("payid").value;
             var state = document.getElementById("state").value;
+            var uname = document.getElementById("uname").value;
             var price = document.getElementById("price").value;
             var payname = document.getElementById("payname").value;
             $.ajax({
                 url: "EditFix",
                 type: "post",
                 data: {
+                    "uname": uname,
                     "payid": payid,
                     "state": state,
                     "price":price,
                     "payname":payname,
-                    "date":date
+                    "paytime":paytime
                 },
                 dataType: "json",
                 success: function (data) {
@@ -275,9 +284,24 @@
             });
         }
     } //提交修改报修信息
-
+    function GetPayIdStash() {
+        var payidstash=sessionStorage.getItem("PayIdStash");
+        var unamestash=sessionStorage.getItem("PayUnameStash");
+        var pricestash=sessionStorage.getItem("PayPriceStash");
+        var statestash=sessionStorage.getItem("PayStateStash");
+        var paytimestash=sessionStorage.getItem("Pay_PayTimeStash");
+        var paynamestash=sessionStorage.getItem("PayNameStash");
+        console.log("开始执行GetParlinPlaceStash")
+        document.getElementById("payid").setAttribute("value",payidstash.toString());
+        document.getElementById("uname").setAttribute("value",unamestash.toString());
+        document.getElementById("state").setAttribute("value",statestash.toString());
+        document.getElementById("price").setAttribute("value",pricestash.toString());
+        document.getElementById("payname").setAttribute("value",paynamestash.toString());
+        document.getElementById("paytime").setAttribute("value",paytimestash.toString());
+        console.log("获取到的PayIdStash是:"+payidstash);
+    };//获取sessionstorage中的parkingplace
+    window.onload=GetPayIdStash();
     window.onload=checksessoin();
-    window.onload=CheckPower;
+    window.onload=CheckPower();
 </script>
-</body>
 </html>
