@@ -20,7 +20,7 @@ public class AllParkingInfoSeverlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, UnsupportedEncodingException {
-        JSONObject tree = new JSONObject();
+        JSONObject data = new JSONObject();//创建返回数据json对象
         JSONObject ParkingInfo = new JSONObject();
         ParkingInfo.put("carNum",1);
         ParkingInfo.put("carNum",2);
@@ -28,16 +28,17 @@ public class AllParkingInfoSeverlet extends HttpServlet {
         ParkingInfo.put("state","已售");
         ParkingInfo.put("price","300/月");
         ParkingInfo.put("price","400/月");
-        tree.put("total",2);
-        tree.put("rows", ParkingInfo);
+        data.put("successcode",200);
+        data.put("total",2);
+        data.put("rows", ParkingInfo);
         resp.setContentType("text/html");
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         PrintWriter out = resp.getWriter();
         String postName = req.getParameter("postName");
-        out.write(tree.toString());
+        out.write(data.toString());//给前端返回data数据
         out.flush();
-        out.close();
+        out.close();//关闭读写流
     }
 }
 
