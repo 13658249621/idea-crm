@@ -68,52 +68,28 @@
                 <span style="color: #3c3c3c;font-size: larger" class="help-block">注意核实土地证号和业主用户名是否正确！</span>
                 <form action="#" class="form-horizontal"> <!--等价于div.container-->
                     <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="houseid" class="control-label">房屋编号</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="houseid" placeholder="房屋编号" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="danyuan" class="control-label">单元号</label></div>
-                        <div class="col-sm-4">
-                            <select class="form-control" id="danyuan">
-                                <option>1单元</option>
-                                <option>2单元</option>
-                                <option>3单元</option>
-                                <option>4单元</option>
-                                <option>5单元</option>
-                                <option>6单元</option>
-                            </select>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="danyuan" placeholder="单元" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="louceng" class="control-label">楼层</label></div>
-                        <div class="col-sm-4">
-                            <select id="louceng" class="form-control">
-                                <option>1楼</option>
-                                <option>2楼</option>
-                                <option>3楼</option>
-                                <option>4楼</option>
-                                <option>5楼</option>
-                                <option>6楼</option>
-                                <option>7楼</option>
-                                <option>8楼</option>
-                                <option>9楼</option>
-                            </select>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="louceng" placeholder="楼层" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
-                        <div class="col-sm-2"><label for="fangjian" class="control-label">楼层</label></div>
-                        <div class="col-sm-4">
-                            <select id="fangjian" class="form-control">
-                                <option>A-1</option>
-                                <option>A-2</option>
-                                <option>A-3</option>
-                                <option>A-4</option>
-                                <option>B-1</option>
-                                <option>B-2</option>
-                                <option>B-3</option>
-                                <option>B-4</option>
-                            </select>
+                        <div class="col-sm-2"><label for="fangjian" class="control-label">房间</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="fangjian" placeholder="房间" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="landnum" class="control-label">土地证号</label></div>
-                        <div class="col-sm-4"><input type="text" class="form-control" id="landnum" placeholder="土地证号">
+                        <div class="col-sm-4"><input type="text" class="form-control" id="landnum" placeholder="土地证号" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
@@ -161,13 +137,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageHouse">
                     <option disabled selected hidden>楼栋管理</option>
                     <option value="ManageHouse.html">查询楼栋房屋信息</option>
-                    <option value="EditHouse.html">管理楼栋房屋信息</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageFix">
                     <option disabled selected hidden>报修管理</option>
                     <option value="ManageFix.html">查询报修</option>
-                    <option value="EditFix.html">管理报修(删除，编辑)</option>
+                    <option value="EditFix.html" hidden disabled>管理报修(删除，编辑)</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
@@ -185,13 +161,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageSugg">
                     <option disabled selected hidden>投诉和建议管理</option>
                     <option value="ManageSugg.html">查询投诉和建议</option>
-                    <option value="EditSugg.html">删除投诉和建议</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageNotice">
                     <option disabled selected hidden>社区公告管理</option>
                     <option value="ManageNotice.html">查询社区公告</option>
-                    <option value="EditNotice.html">发布社区公告</option>
+                    <option value="AddNotice.html">发布社区公告</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageUser">
@@ -269,6 +245,7 @@
     </div>
 </div>
 
+</body>
 <script type="text/javascript">
 
     function EditHouse() {
@@ -297,9 +274,24 @@
             });
         }
     } //提交修改报修信息
-
+    function GetHouseIdStash() {
+        var houseidstash=sessionStorage.getItem("HouseIdStash");
+        var danyuanstash=sessionStorage.getItem("HouseDanYuanStash");
+        var fangjianstash=sessionStorage.getItem("HouseFangJianStash");
+        var unamestash=sessionStorage.getItem("HouseUnameStash");
+        var loucengstash=sessionStorage.getItem("HouseLouCengStash");
+        var landnumstash=sessionStorage.getItem("HouseLandNumStash");
+        console.log("开始执行GetParlinPlaceStash")
+        document.getElementById("houseid").setAttribute("value",houseidstash.toString());
+        document.getElementById("danyuan").setAttribute("value",danyuanstash.toString());
+        document.getElementById("louceng").setAttribute("value",loucengstash.toString());
+        document.getElementById("fangjian").setAttribute("value",fangjianstash.toString());
+        document.getElementById("uname").setAttribute("value",unamestash.toString());
+        document.getElementById("landnum").setAttribute("value",landnumstash.toString());
+        console.log("获取到的houseidstash是:"+houseidstash);
+    };//获取sessionstorage中的parkingplace
+    window.onload=GetHouseIdStash();
     window.onload=checksessoin();
     window.onload=CheckPower;
 </script>
-</body>
 </html>
