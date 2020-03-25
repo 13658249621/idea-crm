@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -22,7 +21,7 @@
     <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-table.js";></script>
+    <script type="text/javascript" src="js/bootstrap-table.js" ;></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
     <script type="text/javascript" src="js/Util.js"></script>
     <![endif]-->
@@ -70,7 +69,27 @@
                 <form action="#" class="form-horizontal"> <!--等价于div.container-->
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="suggid" class="control-label">投诉和建议编号</label></div>
-                        <div class="col-sm-4"><input type="text" class="form-control" id="suggid" placeholder="投诉和建议编号">
+                        <div class="col-sm-4"><input type="text" class="form-control" id="suggid" placeholder="投诉和建议编号"
+                                                     disabled>
+                        </div>
+                    </div>
+                    <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="uname" class="control-label">用户名</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="uname" placeholder="用户名"
+                                                     disabled>
+                        </div>
+                    </div>
+                    <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="phone" class="control-label">联系电话</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="phone" placeholder="联系电话"
+                                                     disabled>
+                        </div>
+                    </div>
+                    <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="info" class="control-label">内容</label></div>
+                        <div class="col-sm-4"><textarea
+                                style="height:20%;overflow-x:visible;overflow-y:visible;resize:none" type="text"
+                                class="form-control" id="info" placeholder="内容" disabled></textarea>
                         </div>
                     </div>
 
@@ -78,8 +97,8 @@
                         <div class="col-sm-2"><label for="type" class="control-label">类型</label></div>
                         <div class="col-sm-4">
                             <select id="type" class="form-control">
-                                <option>建议</option>
-                                <option>投诉</option>
+                                <option id="op_sugg">建议</option>
+                                <option id="op_report">投诉</option>
                             </select>
                         </div>
                     </div>
@@ -87,8 +106,8 @@
                         <div class="col-sm-2"><label for="state" class="control-label">状态</label></div>
                         <div class="col-sm-4">
                             <select id="state" class="form-control">
-                                <option>待处理</option>
-                                <option>已处理</option>
+                                <option id="op_wait">待处理</option>
+                                <option id="op_done">已处理</option>
                             </select>
                         </div>
                     </div>
@@ -116,7 +135,7 @@
 
         <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar">
             <div class="list-group" style="margin-top: 60px">
-                <a href="#"  disabled="true" class="list-group-item active" style="background-color: #3c3c3c">快速导航</a>
+                <a href="#" disabled="true" class="list-group-item active" style="background-color: #3c3c3c">快速导航</a>
                 <a href="fix.html" class="list-group-item"><p>我要报修</p></a>
                 <a href="parking.html" class="list-group-item"><p>查询车位</p></a>
                 <a href="pay.html" class="list-group-item"><p>缴费信息</p></a>
@@ -132,19 +151,19 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageHouse">
                     <option disabled selected hidden>楼栋管理</option>
                     <option value="ManageHouse.html">查询楼栋房屋信息</option>
-                    <option value="EditHouse.html">管理楼栋房屋信息</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageFix">
                     <option disabled selected hidden>报修管理</option>
                     <option value="ManageFix.html">查询报修</option>
-                    <option value="EditFix.html">管理报修(删除，编辑)</option>
+                    <option value="EditFix.html" hidden disabled>管理报修(删除，编辑)</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
                     <option disabled selected hidden>车位管理</option>
                     <option value="ManageParking.html">查询车位</option>
-                     <option value="AddParking.html">添加车位</option>
+                    <option value="AddParking.html">添加车位</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManagePay">
@@ -156,13 +175,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageSugg">
                     <option disabled selected hidden>投诉和建议管理</option>
                     <option value="ManageSugg.html">查询投诉和建议</option>
-                    <option value="EditSugg.html">删除投诉和建议</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageNotice">
                     <option disabled selected hidden>社区公告管理</option>
                     <option value="ManageNotice.html">查询社区公告</option>
-                    <option value="EditNotice.html">发布社区公告</option>
+                    <option value="AddNotice.html">发布社区公告</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageUser">
@@ -203,7 +222,8 @@
                 <button id="fanhuitest" type="button" class="btn btn-default" data-dismiss="modal">
                     返回
                 </button>
-                <button id="querentest" type="button" class="btn btn-primary" data-dismiss="modal" onclick="history.back()">
+                <button id="querentest" type="button" class="btn btn-primary" data-dismiss="modal"
+                        onclick="history.back()">
                     确认
                 </button>
             </div>
@@ -239,12 +259,13 @@
         </div>
     </div>
 </div>
+</body>
 
 <script type="text/javascript">
 
     function EditSugg() {
         {
-            var suggid=document.getElementById("suggid").value;
+            var suggid = document.getElementById("suggid").value;
             var state = document.getElementById("state").value;
             var type = document.getElementById("type").value;
             $.ajax({
@@ -253,7 +274,7 @@
                 data: {
                     "suggid": suggid,
                     "state": state,
-                    "type":type
+                    "type": type
                 },
                 dataType: "json",
                 success: function (data) {
@@ -267,9 +288,33 @@
             });
         }
     } //提交修改报修信息
+    function GetParkingPlaceStash() {
+        var suggidstash = sessionStorage.getItem("SuggIdStash");
+        var phonestash = sessionStorage.getItem("SuggPhoneStash");
+        var unamestash = sessionStorage.getItem("SuggUnameStash");
+        var statestash = sessionStorage.getItem("SuggStateStash");
+        var infostash = sessionStorage.getItem("SuggInfoStash");
+        var typestash = sessionStorage.getItem("SuggTypeStash");
 
-    window.onload=checksessoin();
-    window.onload=CheckPower;
+        console.log("开始执行GetParlinPlaceStash")
+        document.getElementById("suggid").setAttribute("value", suggidstash.toString());
+        document.getElementById("phone").setAttribute("value", phonestash.toString());
+        document.getElementById("uname").setAttribute("value", unamestash.toString());
+        document.getElementById("info").innerHTML = infostash.toString();
+        if (statestash.toString() == "待处理") {
+            document.getElementById("op_wait").setAttribute("selected", true);
+        } else if (statestash.toString() == "已处理") {
+            document.getElementById("op_done").setAttribute("selected", true);
+        };//根据state判断选中投诉或建议
+        if (typestash.toString() == "投诉") {
+            document.getElementById("op_report").setAttribute("selected", true);
+        } else if (typestash.toString() == "建议") {
+            document.getElementById("op_sugg").setAttribute("selected", true);
+        }
+        console.log("获取到的SuggIdStash是:" + suggidstash);
+    };//获取sessionstorage中的parkingplace
+    window.onload = GetParkingPlaceStash();
+    window.onload = checksessoin();
+    window.onload = CheckPower;
 </script>
-</body>
 </html>
