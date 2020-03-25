@@ -70,7 +70,7 @@
                 <form action="#" class="form-horizontal"> <!--等价于div.container-->
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="parkingplace" class="control-label">车位编号</label></div>
-                        <div class="col-sm-4"><input type="text" class="form-control" id="parkingplace" placeholder="车位编号">
+                        <div class="col-sm-4"><input type="text" class="form-control" id="parkingplace" placeholder="车位编号" disabled>
                         </div>
                     </div>
 
@@ -145,13 +145,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
                     <option disabled selected hidden>车位管理</option>
                     <option value="ManageParking.html">查询车位</option>
-                    <option value="EditParking.html">管理车位(添加，删除，编辑)</option>
+                     <option value="AddParking.html">添加车位</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManagePay">
                     <option disabled selected hidden>缴费管理</option>
                     <option value="ManagePay.html">查询缴费</option>
-                    <option value="EditPay.html">编辑缴费项目(针对业主)</option>
+                    <option value="AddPay.html">发布缴费项目</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageSugg">
@@ -241,6 +241,8 @@
     </div>
 </div>
 
+
+</body>
 <script type="text/javascript">
 
     function EditParking() {
@@ -269,10 +271,22 @@
                 }
             });
         }
-    } //提交修改报修信息
+    }; //提交修改报修信息
 
+    function GetParkingPlaceStash() {
+        var parkingplacestash=sessionStorage.getItem("ParkingPlaceStash");
+        var pricestash=sessionStorage.getItem("ParkingPriceStash");
+        var unamestash=sessionStorage.getItem("ParkingUnameStash");
+        var statestash=sessionStorage.getItem("ParkingStateStash");
+        console.log("开始执行GetParlinPlaceStash")
+        document.getElementById("parkingplace").setAttribute("value",parkingplacestash.toString());
+        document.getElementById("price").setAttribute("value",pricestash.toString());
+        document.getElementById("uname").setAttribute("value",unamestash.toString());
+        document.getElementById("state").setAttribute("value",statestash.toString());
+        console.log("获取到的ParkingPlaceStash是:"+parkingplacestash);
+    };//获取sessionstorage中的parkingplace
+    window.onload=GetParkingPlaceStash();
     window.onload=checksessoin();
     window.onload=CheckPower;
 </script>
-</body>
 </html>
