@@ -16,7 +16,7 @@
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
-    <title>发布公告信息</title>
+    <title>编辑公告信息</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
@@ -68,11 +68,17 @@
             <div>
                 <span style="color: #3c3c3c;font-size: larger" class="help-block">维修师傅会在您选择日期提供维修服务，注意保持通话畅通！</span>
                 <form action="#" class="form-horizontal"> <!--等价于div.container-->
+                    <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="noticeid" class="control-label">公告编号</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="noticeid" placeholder="公告编号" disabled>
+                        </div>
+                    </div>
 
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="title" class="control-label">标题</label></div>
                         <div class="col-sm-4"><input type="text" class="form-control" id="title" placeholder="标题">
                         </div>
+
                     </div>
 
                     <div class="form-group"><!--div.row-->
@@ -96,6 +102,7 @@
                                     data-whatever="@mdo">发布
                             </button>
                         </div>
+                        </button>
                         <div class="col-sm-2">
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
                                     data-whatever="@mdo">取消
@@ -127,13 +134,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageHouse">
                     <option disabled selected hidden>楼栋管理</option>
                     <option value="ManageHouse.html">查询楼栋房屋信息</option>
-                    <option value="EditHouse.html">管理楼栋房屋信息</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageFix">
                     <option disabled selected hidden>报修管理</option>
                     <option value="ManageFix.html">查询报修</option>
-                    <option value="EditFix.html">管理报修(删除，编辑)</option>
+                    <option value="EditFix.html" hidden disabled>管理报修(删除，编辑)</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
@@ -151,13 +158,13 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageSugg">
                     <option disabled selected hidden>投诉和建议管理</option>
                     <option value="ManageSugg.html">查询投诉和建议</option>
-                    <option value="EditSugg.html">删除投诉和建议</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageNotice">
                     <option disabled selected hidden>社区公告管理</option>
                     <option value="ManageNotice.html">查询社区公告</option>
-                    <option value="EditNotice.html">发布社区公告</option>
+                    <option value="AddNotice.html">发布社区公告</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageUser">
@@ -233,6 +240,7 @@
         </div>
     </div>
 </div>
+</body>
 <script type="text/javascript">
 
     function EditFix() {
@@ -261,9 +269,22 @@
         }
     } //提交修改报修信息
 
+    function GetNoticeStash() {
+        var noticeidstash=sessionStorage.getItem("NoticeIdStash");
+        var titlestash=sessionStorage.getItem("NoticeTitleStash");
+        var infostash=sessionStorage.getItem("NoticeInfoStash");
+        var datestash=sessionStorage.getItem("NoticeDateStash");
+        console.log("开始执行GetParlinPlaceStash")
+        document.getElementById("noticeid").setAttribute("value",noticeidstash.toString());
+        document.getElementById("title").setAttribute("value",titlestash.toString());
+        document.getElementById("info").innerHTML = infostash.toString();//给textarea赋值
+        document.getElementById("date").setAttribute("value",datestash.toString());
+        console.log("titlestash是:"+titlestash)
+        console.log("获取到的noticeidstash是:"+noticeidstash);
+    };//获取sessionstorage中的parkingplace
+
+    window.onload=GetNoticeStash();
     window.onload=checksessoin();
     window.onload=CheckPower;
 </script>
-
-</body>
 </html>
