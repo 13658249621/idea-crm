@@ -70,12 +70,12 @@
                 <form action="#" class="form-horizontal"> <!--等价于div.container-->
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="uid" class="control-label">用户编号</label></div>
-                        <div class="col-sm-4"><input type="text" class="form-control" id="uid" placeholder="用户id">
+                        <div class="col-sm-4"><input type="text" class="form-control" id="uid" placeholder="用户id" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="uname" class="control-label">用户名</label></div>
-                        <div class="col-sm-4"><input type="text" class="form-control" id="uname" placeholder="用户id">
+                        <div class="col-sm-4"><input type="text" class="form-control" id="uname" placeholder="用户名">
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
@@ -88,8 +88,9 @@
                         <div class="col-sm-2"><label for="power" class="control-label">权限等级</label></div>
                         <div class="col-sm-4">
                             <select id="power" class="form-control">
-                                <option>业主</option>
-                                <option>物业管理人员</option>
+                                <option id="op_yezhu">业主</option>
+                                <option id="op_companymanager">物业管理人员</option>
+                                <option id="op_pmsmanager">系统管理员</option>
                             </select>
                         </div>
                     </div>
@@ -169,7 +170,7 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageUser">
                     <option disabled selected hidden>用户管理</option>
                     <option value="ManageUser.html">查询用户</option>
-                    <option value="EditUser.html">添加用户</option>
+                    <option value="AddUser.html">添加用户</option>
                 </select>
             </div>
         </div><!--/.sidebar-offcanvas-->
@@ -239,7 +240,7 @@
         </div>
     </div>
 </div>
-
+</body>
 <script type="text/javascript">
 
     function EditUser() {
@@ -269,9 +270,54 @@
             });
         }
     } //提交修改报修信息
-
+    function GetPayIdStash() {
+        var uidstash=sessionStorage.getItem("UserIdStash");
+        var unamestash=sessionStorage.getItem("UserUnameStash");
+        var passwordstash=sessionStorage.getItem("UserPasswordStash");
+        var powerstash=sessionStorage.getItem("UserPowerStash");
+        console.log("开始执行GetParlinPlaceStash")
+        document.getElementById("uid").setAttribute("value",uidstash.toString());
+        document.getElementById("uname").setAttribute("value",unamestash.toString());
+        document.getElementById("password").setAttribute("value",passwordstash.toString());
+        if (powerstash.toString() == "业主") {
+            document.getElementById("op_yezhu").setAttribute("selected", true);
+        } else if (powerstash.toString() == "物业管理人员") {
+            document.getElementById("op_companymanager").setAttribute("selected", true);
+        } else if (powerstash.toString()=="系统管理员"){
+            document.getElementById("op_pmsmanager").setAttribute("selected", true);
+        }
+        //根据state判断选中投诉或建议
+        console.log("获取到的UserPowerStash是:"+powerstash);
+    };//获取sessionstorage中的parkingplace
+    window.onload=GetPayIdStash();
     window.onload=checksessoin();
     window.onload=CheckPower;
 </script>
-</body>
+<script>
+
+    $('#item_table').bootstrapTable({
+        columns: [{
+            field: 'id',
+            title: 'Item ID'
+        }, {
+            field: 'name',
+            title: 'Item Name'
+        }, {
+            field: 'price',
+            title: 'Item Price'
+        }],
+        data: [{
+            id: 1,
+            name: 'Item 1',
+            price: '$1'
+        }, {
+            id: 2,
+            name: 'Item 2',
+            price: '$2'
+        }]
+    });
+
+
+</script>
+
 </html>
