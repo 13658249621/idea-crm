@@ -113,6 +113,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>AllUser</servlet-name>
+        <servlet-class>com.zr.controller.AllUserController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllUser</servlet-name>
+        <url-pattern>/AllUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>EditFix</servlet-name>
         <servlet-class>com.zr.controller.EditFixController</servlet-class>
     </servlet>
