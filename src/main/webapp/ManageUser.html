@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -17,17 +16,15 @@
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
     <title>管理用户信息</title>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-table.js";></script>
+    <script type="text/javascript" src="js/bootstrap-table.js" ;></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
     <script type="text/javascript" src="js/Util.js"></script>
 </head>
 
-<body  style="background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582826068275&di=ceda3df1e2da2b76833288340f0d9981&imgtype=0&src=http%3A%2F%2Fimg.1ppt.com%2Fuploads%2Fallimg%2F1511%2F1_151125155652_1.jpg) no-repeat center ; background-size: cover;">
+<body style="background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582826068275&di=ceda3df1e2da2b76833288340f0d9981&imgtype=0&src=http%3A%2F%2Fimg.1ppt.com%2Fuploads%2Fallimg%2F1511%2F1_151125155652_1.jpg) no-repeat center ; background-size: cover;">
 <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
         <div class="navbar-header">
@@ -45,7 +42,7 @@
                 <li class="active"><a href="home.html">主页</a></li>
                 <li><a href="#about">关于我们</a></li>
                 <li><a href="#contact">联系我们</a></li>
-                <li><a href="index.html">退出登录</a></li>
+                <li><a onclick="window.location.href='index.html';sessionStorage.clear()">退出登录</a></li>
             </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
@@ -66,14 +63,15 @@
 
                 <button class="btn btn-primary" onclick="initBootstrapTable()">查看所有用户信息</button>
                 <button class="btn btn-primary" onclick="EditSelect()">编辑用户信息</button>
-                <button type="button" class="btn btn-danger" onclick="deleteSelect()" >删除
+                <button type="button" class="btn btn-danger" onclick="deleteSelect()">删除
                 </button>
 
-                <table id="parking-table" class="table table-bordered" data-toggle="table" >
+                <table id="parking-table" class="table table-bordered" data-toggle="table" data-toolbar="#toolbar"
+                       data-toolbar-align="right">
                 </table>
 
 
-                <button type="button" class="btn btn-success" onclick="post()">查看我的车位
+                <button type="button" class="btn btn-success" onclick="GetData()">查看我的车位
                 </button>
                 <p></p>
                 <div>如需购买车位服务，请与相关工作人员联系</div>
@@ -83,7 +81,7 @@
 
         <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar">
             <div class="list-group" style="margin-top: 60px">
-                <a href="#"  disabled="true" class="list-group-item active" style="background-color: #3c3c3c">快速导航</a>
+                <a href="#" disabled="true" class="list-group-item active" style="background-color: #3c3c3c">快速导航</a>
                 <a href="fix.html" class="list-group-item"><p>我要报修</p></a>
                 <a href="parking.html" class="list-group-item"><p>查询车位</p></a>
                 <a href="pay.html" class="list-group-item"><p>缴费信息</p></a>
@@ -93,7 +91,7 @@
                         onchange="location.href=this.options[this.selectedIndex].value;">
                     <option disabled selected hidden>业主管理</option>
                     <option value="ManageProprietor.html">查询业主信息</option>
-                    <option value="EditProprietor.html">管理业主信息</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageHouse">
@@ -111,7 +109,7 @@
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageParking">
                     <option disabled selected hidden>车位管理</option>
                     <option value="ManageParking.html">查询车位</option>
-                     <option value="AddParking.html">添加车位</option>
+                    <option value="AddParking.html">添加车位</option>
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManagePay">
@@ -147,33 +145,27 @@
         <p>&copy;权限归属 物业管理公司</p>
     </footer>
 
-    </div><!--/.container-->
+</div><!--/.container-->
 </div>
 </body>
 <script type="text/javascript">
     $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['zh-CN']);
+
     function initBootstrapTable() {
         $("#parking-table").bootstrapTable('destroy');
         $('#parking-table').bootstrapTable({
             url: 'AllUser',             //请求后台的URL（*）
             method: 'post',                      //请求方式（*）
-            contentType:"application/x-www-form-urlencoded; charset=UTF-8",
-            datatype:"text",
-            toolbar: '#toolbar',                //工具按钮用哪个容器
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            datatype: "text",
+            queryParamsType: "undefined",//工具按钮用哪个容器
+            queryParams: "queryParams",
             striped: true,                      //是否显示行间隔色
             cache: false,
             selectItemName: "PLis",              //radio 或者 checkbox 的字段 name 名。
             idField: "parkingplace",
             pagination: true,                   //是否显示分页（*）
             //得到查询的参数
-            queryParams : function(params) {
-                var testuname ="testuname"
-                return {
-                    pageNum: params.offset+1,
-                    pageSize: params.limit,
-                    date:testuname
-                };
-            },
             //传递参数（*）
             sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
             pageNumber: 1,                       //初始化加载第一页，默认第一页
@@ -187,7 +179,6 @@
             showColumns: false,                 //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
             searchAlign: "left",
-            toolbarAlign: "right",
             minimumCountColumns: 2,             //最少允许的列数
             clickToSelect: true,                //是否启用点击选中行
             //每一行的唯一标识，一般为主键列
@@ -217,63 +208,148 @@
     }//初始化boot strap table、
     //查询参数
 
-    function deleteSelect(){
+    function GetData() {
+        $.ajax({
+            type: "post", //传数据的方式
+            url: "TestUser", //servlet地址
+            data: {
+                "testuname":"testuname",
+                "testuid":"1"
+            },//传的数据  form表单 里面的数据
+            success: function (data) { //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
+                var data_test=data.toString();
+                console.log("data.test是:"+data_test);
+                var BootStrapTbleData = data.toString();
+                var BootStrapTbleDataObject = JSON.parse(BootStrapTbleData);//把BootStrapTbleData转换成Json对象
+                var Rows_Data = BootStrapTbleDataObject.rows;
+                var Rows_Data_String = JSON.stringify(Rows_Data);
+                var test1 = Rows_Data_String.replace("[", "");//处理json字符串外中括号
+                var ROWS = test1.replace("]", "");//处理json字符串外中括号
+                console.log("data数据类型是:" + typeof (data));
+                console.log("BootStrapTbleData数据类型是:" + typeof (BootStrapTbleData));
+                console.log("BootStrapTbleDataObject数据类型是:" + typeof (BootStrapTbleDataObject));
+                console.log("Rows_Data数据类型是:" + typeof (Rows_Data));
+                console.log("Rows_Data_String数据类型是:" + typeof (Rows_Data_String));
+                console.log("test1数据类型是:" + typeof (test1));
+                console.log("ROWS数据类型是:" + typeof (ROWS));
+                console.log("BootStrapTablaDta:" + BootStrapTbleData);
+                console.log("Rows_Data_String" + Rows_Data_String)
+                console.log("Rows_data:" + ROWS);
+                //需要显示的数据
+                var ROW_DATA = Rows_Data;
+                console.log("ROW_DATA数据类型是:" + typeof (ROW_DATA));
+                //bootstrap table初始化数据
+                $("#parking-table").bootstrapTable('destroy');
+                $('#parking-table').bootstrapTable({
+                    data: ROW_DATA,
+                    datatype: "text",
+                    queryParamsType: "undefined",//工具按钮用哪个容器
+                    queryParams: "queryParams",
+                    striped: true,                      //是否显示行间隔色
+                    cache: false,
+                    selectItemName: "PLis",              //radio 或者 checkbox 的字段 name 名。
+                    idField: "parkingplace",
+                    pagination: true,                   //是否显示分页（*）
+                    //得到查询的参数
+                    //传递参数（*）
+                    sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+                    pageNumber: 1,                       //初始化加载第一页，默认第一页
+                    pageSize: 7,                       //每页的记录行数（*）
+                    pageList: [5, 10, 15, 20],        //可供选择的每页的行数（*）
+                    smartDisplay: false,
+                    singleSelect: true,
+                    checkboxHeader: true,
+                    search: true,                      //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+                    strictSearch: false,
+                    showColumns: false,                 //是否显示所有的列
+                    showRefresh: true,                  //是否显示刷新按钮
+                    searchAlign: "left",
+                    minimumCountColumns: 2,             //最少允许的列数
+                    clickToSelect: true,                //是否启用点击选中行
+                    //每一行的唯一标识，一般为主键列
+                    showToggle: false,                   //是否显示详细视图和列表视图的切换按钮
+                    cardView: false,                    //是否显示详细视图
+                    detailView: false,//是否显示父子表
+                    columns: [
+                        {
+                            checkbox: true,
+                        },
+                        {
+                            field: 'uid',
+                            title: '用户编号',
+                            uniqueId: "selected"
+                        }, {
+                            field: 'uname',
+                            title: '用户名',
+                        }, {
+                            field: 'password',
+                            title: '密码',
+                        }, {
+                            field: 'power',
+                            title: '权限等级',
+                        }
+                    ],
+                });
+            }
+        });
+    };//获取查询数据data
+
+    function deleteSelect() {
         var UserItem = $('#parking-table').bootstrapTable('getSelections');
-        if (UserItem.length <= 0){
+        if (UserItem.length <= 0) {
             alert("请选择您要删除的一项");
-        }else{
-            var uid=GetValue(UserItem,"uid");
-            console.log("uid是:"+uid);
+        } else {
+            var uid = GetValue(UserItem, "uid");
+            console.log("uid是:" + uid);
             $.ajax({
-                type : "POST", //传数据的方式
-                url : "AllPay", //servlet地址
-                data : {
+                type: "POST", //传数据的方式
+                url: "AllPay", //servlet地址
+                data: {
                     "uid": uid
                 }, //传的数据  form表单 里面的数据
-                success : function(result) { //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
+                success: function (result) { //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
                     initBootstrapTable();
                 }
             });
         }
     };//删除用户信息请求
 
-    function post(){
+    function post() {
         $("#parking-table").bootstrapTable('destroy');
         $('#parking-table').bootstrapTable({
-            url:'AllUser',             //请求后台的URL（*）
+            url: 'AllUser',             //请求后台的URL（*）
             method: 'post',                      //请求方式（*）
-            contentType:"application/x-www-form-urlencoded; charset=UTF-8",
-            datatype:"text",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            datatype: "text",
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
             cache: false,
-            selectItemName:"PLis",              //radio 或者 checkbox 的字段 name 名。
-            idField:"parkingplace",
+            selectItemName: "PLis",              //radio 或者 checkbox 的字段 name 名。
+            idField: "parkingplace",
             pagination: true,                   //是否显示分页（*）
             //得到查询的参数
-            queryParams : function(params)
-            {
+            queryParams: function (params) {
                 params.testuname = 'value1';
-                params.testuid= 'value2';
+                params.testuid = 'value2';
                 return params;
             },//传递参数（*）
             sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
-            pageNumber:1,                       //初始化加载第一页，默认第一页
+            pageNumber: 1,                       //初始化加载第一页，默认第一页
             pageSize: 10,                       //每页的记录行数（*）
             pageList: [5, 10, 15, 20],        //可供选择的每页的行数（*）
-            smartDisplay:false,
-            singleSelect:true,
-            checkboxHeader:true,
+            smartDisplay: false,
+            singleSelect: true,
+            checkboxHeader: true,
             search: true,                      //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             strictSearch: false,
             showColumns: false,                 //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
-            searchAlign:"left",
-            toolbarAlign:"left",
+            searchAlign: "left",
+            toolbarAlign: "left",
             minimumCountColumns: 2,             //最少允许的列数
             clickToSelect: true,                //是否启用点击选中行
             //每一行的唯一标识，一般为主键列
-            showToggle:false,                   //是否显示详细视图和列表视图的切换按钮
+            showToggle: false,                   //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
             detailView: false,//是否显示父子表
             columns: [
@@ -297,27 +373,27 @@
             ],
         });
     }//查看我的车位
-    function EditSelect(){
+    function EditSelect() {
         var UserItem = $('#parking-table').bootstrapTable('getSelections');
-        console.log("ParkingItem是:"+UserItem);
-        if (UserItem.length <= 0){
+        console.log("ParkingItem是:" + UserItem);
+        if (UserItem.length <= 0) {
             alert("请选择您要删除的一项");
-        }else{
-            var uid=GetValue(UserItem,"uid");
-            var power=GetValue(UserItem,"power");
-            var uname=GetValue(UserItem,"uname");
-            var password=GetValue(UserItem,"password");
+        } else {
+            var uid = GetValue(UserItem, "uid");
+            var power = GetValue(UserItem, "power");
+            var uname = GetValue(UserItem, "uname");
+            var password = GetValue(UserItem, "password");
 
-            console.log("uid是:"+uid);
-            sessionStorage.setItem("UserIdStash",uid);
-            sessionStorage.setItem("UserPasswordStash",password);
-            sessionStorage.setItem("UserPowerStash",power);
-            sessionStorage.setItem("UserUnameStash",uname);
-            window.location.href="EditUser.html";
+            console.log("uid是:" + uid);
+            sessionStorage.setItem("UserIdStash", uid);
+            sessionStorage.setItem("UserPasswordStash", password);
+            sessionStorage.setItem("UserPowerStash", power);
+            sessionStorage.setItem("UserUnameStash", uname);
+            window.location.href = "EditUser.html";
         }
     };//编辑车位信息，保存parkingpalce到sessionstorage，跳转到添加车位页面
-    window.onload=checksessoin();
-    window.onload=CheckPower;
-    window.onload=initBootstrapTable();//初始化bootstrap-table，查询所有车位信息
+    window.onload = checksessoin();
+    window.onload = CheckPower;
+    window.onload = initBootstrapTable();//初始化bootstrap-table，查询所有车位信息
 </script>
 </html>
