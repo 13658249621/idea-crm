@@ -46,7 +46,7 @@
                 <li class="active"><a href="home.html">主页</a></li>
                 <li><a href="#about">关于我们</a></li>
                 <li><a href="#contact">联系我们</a></li>
-                <li><a href="index.html">退出登录</a></li>
+                <li><a onclick="window.location.href='index.html';sessionStorage.clear()">退出登录</a></li>
             </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
@@ -128,7 +128,7 @@
                         onchange="location.href=this.options[this.selectedIndex].value;">
                     <option disabled selected hidden>业主管理</option>
                     <option value="ManageProprietor.html">查询业主信息</option>
-                    <option value="EditProprietor.html">管理业主信息</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageHouse">
@@ -225,7 +225,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label class="control-label">是否确认保存更改！</label>
+                        <label class="control-label">是否确认发布公告！</label>
                     </div>
                 </form>
             </div>
