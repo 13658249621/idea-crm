@@ -60,6 +60,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>AllPro</servlet-name>
+        <servlet-class>com.zr.controller.AllProprietorController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllPro</servlet-name>
+        <url-pattern>/AllPro</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>MyParking</servlet-name>
         <servlet-class>com.zr.controller.MyParkingController</servlet-class>
     </servlet>
@@ -119,6 +128,15 @@
     <servlet-mapping>
         <servlet-name>AllUser</servlet-name>
         <url-pattern>/AllUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestUser</servlet-name>
+        <servlet-class>com.zr.controller.TestUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestUser</servlet-name>
+        <url-pattern>/TestUser</url-pattern>
     </servlet-mapping>
 
     <servlet>
