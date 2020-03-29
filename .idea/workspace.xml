@@ -7,12 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b1a00e5-4a54-41c7-be6f-4d79438aa4c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/AllUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/AddUser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/AllProprietorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/TestUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/zr/model/ProprietorInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/AboutUs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/ContactUs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zr/controller/AllUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zr/controller/AllUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/AddNotice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/AddNotice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/AddParking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/AddParking.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/AddPay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/AddPay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/AddUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/AddUser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/EditFix.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditFix.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/EditHouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditHouse.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/EditNotice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EditNotice.html" afterDir="false" />
@@ -32,6 +37,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/fix.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/fix.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Util.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/notice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/parking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parking.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pay.html" afterDir="false" />
@@ -313,6 +319,8 @@
       <workItem from="1585102449150" duration="1332000" />
       <workItem from="1585115258323" duration="16958000" />
       <workItem from="1585187689223" duration="14720000" />
+      <workItem from="1585275161466" duration="8414000" />
+      <workItem from="1585463867004" duration="9445000" />
     </task>
     <servers />
   </component>
@@ -344,22 +352,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="731" y="289" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582895307779" />
-    <state width="1121" height="203" key="GridCell.Tab.0.bottom" timestamp="1585236166214">
+    <state width="1121" height="203" key="GridCell.Tab.0.bottom" timestamp="1585477559049">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1121" height="203" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585236166214" />
-    <state width="1121" height="203" key="GridCell.Tab.0.center" timestamp="1585236166214">
+    <state width="1121" height="203" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585477559049" />
+    <state width="1121" height="203" key="GridCell.Tab.0.center" timestamp="1585477559049">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1121" height="203" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585236166214" />
-    <state width="1121" height="203" key="GridCell.Tab.0.left" timestamp="1585236166214">
+    <state width="1121" height="203" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585477559049" />
+    <state width="1121" height="203" key="GridCell.Tab.0.left" timestamp="1585477559048">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1121" height="203" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585236166214" />
-    <state width="1121" height="203" key="GridCell.Tab.0.right" timestamp="1585236166214">
+    <state width="1121" height="203" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585477559048" />
+    <state width="1121" height="203" key="GridCell.Tab.0.right" timestamp="1585477559049">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1121" height="203" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585236166214" />
+    <state width="1121" height="203" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585477559049" />
     <state width="1121" height="203" key="GridCell.Tab.1.bottom" timestamp="1585236082385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -396,18 +404,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="587" y="156" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582864369472" />
-    <state x="548" y="395" key="com.intellij.ide.util.TipDialog" timestamp="1585187796819">
+    <state x="548" y="395" key="com.intellij.ide.util.TipDialog" timestamp="1585463867898">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="548" y="395" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585187796819" />
+    <state x="548" y="395" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585463867898" />
     <state x="685" y="476" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584800298042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="476" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584800298042" />
-    <state x="84" y="174" width="786" height="801" key="find.popup" timestamp="1585221022383">
+    <state x="114" y="239" width="786" height="801" key="find.popup" timestamp="1585467853089">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="84" y="174" width="786" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585221022383" />
+    <state x="114" y="239" width="786" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585467853089" />
     <state x="344" y="217" key="new project wizard" timestamp="1582895314727">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
