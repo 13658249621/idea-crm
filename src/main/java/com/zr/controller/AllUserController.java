@@ -24,8 +24,8 @@ public class AllUserController extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         PrintWriter out = resp.getWriter();
-        String name=req.getParameter("testname");
-        String uid=req.getParameter("uid");
+        String testuname=req.getParameter("testuname");
+        String testuid=req.getParameter("testuid");
         String res = "true";
         List<UserInfo> list_user = new ArrayList<UserInfo>();
         UserInfo userInfo = new UserInfo();
@@ -44,15 +44,28 @@ public class AllUserController extends HttpServlet {
         userInfo3.setUid("3");
         userInfo3.setUname("业主1");
         JSONObject data = new JSONObject();
-        list_user.add(userInfo);
-        list_user.add(userInfo2);
-        list_user.add(userInfo3);
-        data.put("successcode", 200);
-        data.put("total", list_user.size());
-        data.put("rows", list_user);
-        out.write(data.toString());
-        out.flush();
-        out.close();
+        if (testuid == "1"){
+            list_user.add(userInfo);
+            list_user.add(userInfo);
+            data.put("successcode", 200);
+            data.put("total", list_user.size());
+            data.put("rows", list_user);
+            out.write(data.toString());
+            out.flush();
+            out.close();
+        }
+        else {
+            list_user.add(userInfo);
+            list_user.add(userInfo2);
+            list_user.add(userInfo3);
+            data.put("successcode", 200);
+            data.put("total", list_user.size());
+            data.put("rows", list_user);
+            out.write(data.toString());
+            out.flush();
+            out.close();
+        }
+
 
 
 
