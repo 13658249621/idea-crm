@@ -45,7 +45,7 @@
                 <li class="active"><a href="home.html">主页</a></li>
                 <li><a href="#about">关于我们</a></li>
                 <li><a href="#contact">联系我们</a></li>
-                <li><a href="index.html">退出登录</a></li>
+                <li><a onclick="window.location.href='index.html';sessionStorage.clear()">退出登录</a></li>
             </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
@@ -65,67 +65,41 @@
              </div>    日期选择器-->
 
             <div>
-                <span style="color: #3c3c3c;font-size: larger" class="help-block">注意核对投诉和建议编号是否正确！</span>
+                <span style="color: #3c3c3c;font-size: larger" class="help-block">如果需要修改业主房产信息请使用楼栋管理中管理楼栋信息功能！</span>
                 <form action="#" class="form-horizontal"> <!--等价于div.container-->
+
                     <div class="form-group"><!--div.row-->
-                        <div class="col-sm-2"><label for="uname" class="control-label">业主用户名</label></div>
-                        <div class="col-sm-4"><input type="text" class="form-control" id="uname" placeholder="业主用户名">
+                        <div class="col-sm-2"><label for="uname" class="control-label" >业主用户名</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="uname" placeholder="业主用户名" disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="danyuan" class="control-label">单元号</label></div>
-                        <div class="col-sm-4">
-                            <select class="form-control" id="danyuan">
-                                <option disabled selected>可不选</option>
-                                <option>1单元</option>
-                                <option>2单元</option>
-                                <option>3单元</option>
-                                <option>4单元</option>
-                                <option>5单元</option>
-                                <option>6单元</option>
-                            </select>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="danyuan" placeholder="单元 " disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="louceng" class="control-label">楼层</label></div>
-                        <div class="col-sm-4">
-                            <select id="louceng" class="form-control">
-                                <option disabled selected>可不选</option>
-                                <option>1楼</option>
-                                <option>2楼</option>
-                                <option>3楼</option>
-                                <option>4楼</option>
-                                <option>5楼</option>
-                                <option>6楼</option>
-                                <option>7楼</option>
-                                <option>8楼</option>
-                                <option>9楼</option>
-                            </select>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="louceng" placeholder="楼层 " disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
                         <div class="col-sm-2"><label for="fangjian" class="control-label">房间号</label></div>
-                        <div class="col-sm-4">
-                            <select id="fangjian" class="form-control">
-                                <option disabled selected>可不选</option>
-                                <option>A-1</option>
-                                <option>A-2</option>
-                                <option>A-3</option>
-                                <option>A-4</option>
-                                <option>B-1</option>
-                                <option>B-2</option>
-                                <option>B-3</option>
-                                <option>B-4</option>
-                            </select>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="fangjian" placeholder="房间号 " disabled>
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
-                        <div class="col-sm-2"><label for="password" class="control-label">联系电话</label></div>
-                        <div class="col-sm-4"><input type="text" class="form-control" id="password" placeholder="联系电话 ">
+                        <div class="col-sm-2"><label for="phone" class="control-label">联系电话</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="phone" placeholder="联系电话 ">
                         </div>
                     </div>
                     <div class="form-group"><!--div.row-->
-                        <div class="col-sm-2"><label for="password" class="control-label">联系电话</label></div>
+                        <div class="col-sm-2"><label for="landnum" class="control-label">土地证号</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" id="landnum" placeholder="土地证号" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group"><!--div.row-->
+                        <div class="col-sm-2"><label for="name" class="control-label">业主姓名</label></div>
                         <div class="col-sm-4"><input type="text" class="form-control" id="name" placeholder="业主姓名 ">
                         </div>
                     </div>
@@ -161,7 +135,7 @@
                         onchange="location.href=this.options[this.selectedIndex].value;">
                     <option disabled selected hidden>业主管理</option>
                     <option value="ManageProprietor.html">查询业主信息</option>
-                    <option value="EditProprietor.html">管理业主信息</option>
+
                 </select>
                 <select class="list-group-item" style="width: 100%;font-size: 14px;color: dimgray" name="here "
                         onchange="location.href=this.options[this.selectedIndex].value;" id="ManageHouse">
@@ -230,7 +204,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label class="control-label">确定要删除联系人？</label>
+                        <label class="control-label">确定要退出当前页面吗？</label>
                     </div>
                 </form>
             </div>
@@ -259,7 +233,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label class="control-label">确定要删除联系人？</label>
+                        <label class="control-label">确认保存更改吗？</label>
                     </div>
                 </form>
             </div>
@@ -288,23 +262,25 @@
 
     function getform() {
         {
-            var danyuan = document.getElementById("danyuan").value;
-            var loucneg = document.getElementById("louceng").value;
+            var louceng = document.getElementById("louceng").value;
             var fangjian = document.getElementById("fangjian").value;
-            var date = document.getElementById("date").value;
-            var info = document.getElementById("info").value;
+            var danyuan = document.getElementById("danyuan").value;
+            var uname = document.getElementById("uname").value;
             var phone = document.getElementById("phone").value;
-            alert(danyuan + loucneg + fangjian + phone + info + date)
+            var name = document.getElementById("name").value;
+            var landnum = document.getElementById("landnum").value;
+            console.log("uname:"+uname +"\ndanyuan:"+ danyuan + "\nlouceng:"+louceng +"\nfangjian:"+fangjian+"\nphone:"+phone +"\nlandnum:"+landnum+"\nname:"+name)
             $.ajax({
                 url: "addFix",
                 type: "post",
                 data: {
                     "danyuan": danyuan,
-                    "louceng": loucneg,
+                    "louceng": louceng,
                     "fangjian": fangjian,
                     "phone": phone,
-                    "info": info,
-                    "date": date
+                    "uname": uname,
+                    "landnum": landnum,
+                    "name": name
                 },
                 dataType: "json",
                 success: function (data) {
@@ -318,7 +294,26 @@
             alert("单元为" + danyuan + "\n楼层为" + loucneg + "\n房间号为" + fangjian + "\n日期为" + date);
         }
     };
+    function GetProprietorStash() {
+        var phonestash=sessionStorage.getItem("ProPhoneStash");
+        var unamestash=sessionStorage.getItem("ProUnameStash");
+        var danyuanstash=sessionStorage.getItem("ProDanYuanStash");
+        var loucengstash=sessionStorage.getItem("ProLouCengStash");
+        var fangjianstash=sessionStorage.getItem("ProFangJianStash");
+        var namestash=sessionStorage.getItem("ProNameStash");
+        var landnumstash=sessionStorage.getItem("ProLandnumStash");
+        console.log("开始执行GetParlinPlaceStash")
+        document.getElementById("uname").setAttribute("value",unamestash.toString());
+        document.getElementById("danyuan").setAttribute("value",danyuanstash.toString());
+        document.getElementById("louceng").setAttribute("value",loucengstash.toString());
+        document.getElementById("fangjian").setAttribute("value",fangjianstash.toString());
+        document.getElementById("name").setAttribute("value",namestash.toString());
+        document.getElementById("phone").setAttribute("value",phonestash.toString());
+        document.getElementById("landnum").setAttribute("value",landnumstash.toString());
 
+        console.log("获取到的NameStash是:"+namestash);
+    };//获取sessionstorage中的parkingplace
+    window.onload=GetProprietorStash();
     window.onload=checksessoin();
     window.onload=CheckPower;
 </script>
