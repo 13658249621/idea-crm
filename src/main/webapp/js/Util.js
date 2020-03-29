@@ -10,7 +10,6 @@ function GetValue(parameter1,parameter2) {
 
     var test1=itemString.replace("[","");//处理json字符串外中括号
     var ItemObj=test1.replace("]","");//处理json字符串外中括号
-
     var jsObject = JSON.parse(ItemObj);//把ItemObj转换成Json对象
     var ReturnValue=eval('jsObject.'+parameter2);
     console.log(ReturnValue);
@@ -50,3 +49,7 @@ function CheckPower() {
     }
 };//根据权限等级显示不同导航菜单
 
+function logout(){
+    window.location.href="index.html";
+    sessionStorage.clear();
+}
