@@ -326,11 +326,11 @@ public class Dao {
      * @return boolean
      *
      **/
-    public boolean addFix(String danyuan,String louceng,String fangjian,String date) {
+    public boolean addFix(String danyuan,String louceng,String fangjian,String date,String uname,String phone,String info,String state) {
         int fixid = getMaxfixid() + 1;
         checkConnect();
-        String sql = "insert into fix (fixid,danyuan,louceng,fangjian,date"
-                + ") values (?,?,?,?,?)";
+        String sql = "insert into fix (fixid,danyuan,louceng,fangjian,date,uname,phone,info,state"
+                + ") values (?,?,?,?,?,?,?,?,?)";
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, fixid);
@@ -338,6 +338,10 @@ public class Dao {
             stmt.setString(3,louceng);
             stmt.setString(4,fangjian);
             stmt.setString(5,date);
+            stmt.setString(6,uname);
+            stmt.setString(7,phone);
+            stmt.setString(8,info);
+            stmt.setString(9,state);
             if (stmt.execute()) {
                 conn.close();
                 return true;
