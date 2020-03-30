@@ -24,11 +24,15 @@ public class AddFixServlet extends HttpServlet {
         String fangjian=req.getParameter("fangjian");
         String louceng=req.getParameter("louceng");
         String date=req.getParameter("date");
+        String uname=req.getParameter("uname");
+        String state=req.getParameter("state");
+        String phone=req.getParameter("phone");
+        String info=req.getParameter("info");
         String res="true";
         JSONObject data=new JSONObject();
         data.put("successcode",200);
         data.put("message","success");
-        fixService.addFixService(danyuan,louceng,fangjian,date);
+        fixService.addFixService(danyuan,louceng,fangjian,date,uname,phone,info,state);
         resp.getWriter().write(String.valueOf(data));
         out.flush();
         out.close();
